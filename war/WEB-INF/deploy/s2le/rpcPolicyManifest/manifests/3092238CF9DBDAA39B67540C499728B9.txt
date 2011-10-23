@@ -1,0 +1,2 @@
+serviceClass: fr.piroxxi.s2le.shared.security.SecurityService
+path: E47F712399D5ECF529E9C734C90510C7.gwt.rpc
