@@ -1,7 +1,12 @@
 package testingApp.ui.eventBus;
 
+import com.google.inject.ImplementedBy;
+import com.google.inject.Singleton;
 
+@ImplementedBy(EventBusImpl.class)
 public interface EventBus {
-	void publishEvent(Event event);
-	void registerEventListener(EventListener<? extends Event> listener);
+	<T extends Event> void registerEventListener(Class<T> clazz,
+			EventListener<T> listener);
+
+	<T extends Event> void publishEvent(Class<T> clazz, T event);
 }

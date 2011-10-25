@@ -23,7 +23,9 @@ public class QueryImpl<T extends BasicEntity> implements Query<T> {
 	public List<T> retrieveAsList() {
 		ArrayList<T> results = new ArrayList<T>();
 		List<T> entities = storage.getAllEntities(clazz);
-
+		if (entities == null) {
+			return new ArrayList<T>();
+		}
 		for (T entity : entities) {
 			boolean isValid = true;
 			for (Filter<T> f : filters) {

@@ -30,8 +30,7 @@ public class SimpleTestingApp {
 		remplissageStorage();
 		testQueries();
 
-		Application application = injector.getInstance(Application.class);
-		application.start();
+		injector.getInstance(Application.class);
 	}
 
 	private static void testQueries() {

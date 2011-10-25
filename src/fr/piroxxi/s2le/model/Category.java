@@ -26,7 +26,7 @@ public class Category extends BasicEntity{
 	/**
 	 * @return the type
 	 */
-	public String getType() {
+	public String getCategoryName() {
 		return type;
 	}
 

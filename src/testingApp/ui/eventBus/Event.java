@@ -1,5 +1,5 @@
 package testingApp.ui.eventBus;
 
-public interface Event{
+public abstract class Event{
 
 }
