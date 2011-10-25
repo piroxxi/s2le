@@ -9,3 +9,6 @@
 /.settings/com.google.gdt.eclipse.core.prefs
 /.settings/com.google.gwt.eclipse.core.prefs
 /.classpath
+
+gwt/WEB-INF/classes
+
