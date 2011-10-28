@@ -6,10 +6,11 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.PasswordTextBox;
-import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.TextBox;
+import com.google.gwt.user.client.ui.Widget;
 
 public class LoginViewImpl extends Composite implements LoginView {
 
@@ -21,7 +22,7 @@ public class LoginViewImpl extends Composite implements LoginView {
 	 * (c'est à dire un Panel (au sens large)) qui contiendra tout ce qu'on
 	 * veut. (tout ce qu'on aura defini dans le ui.xml).
 	 */
-	interface MyUiBinder extends UiBinder<Composite, LoginViewImpl> {
+	interface MyUiBinder extends UiBinder<Widget, LoginViewImpl> {
 	}
 
 	private static MyUiBinder uiBinder = GWT.create(MyUiBinder.class);
@@ -38,26 +39,28 @@ public class LoginViewImpl extends Composite implements LoginView {
 
 	@UiField
 	Label userName;
-	
-	@UiField
-	SimplePanel connectedPanel;
 
 	@UiField
-	SimplePanel deconnectedPanel;
-	
+	HTMLPanel connectedPanel;
+
+	@UiField
+	HTMLPanel deconnectedPanel;
+
 	public LoginViewImpl() {
 		initWidget(uiBinder.createAndBindUi(this));
+		this.connectedPanel.setVisible(true);
+		this.deconnectedPanel.setVisible(false);
 	}
 
 	@Override
 	public void setConnectedUser(String userName) {
-		if (userName == null) {
+		if (userName != null) {
 			this.connectedPanel.setVisible(false);
 			this.deconnectedPanel.setVisible(true);
+			this.userName.setText(userName);
 		} else {
 			this.connectedPanel.setVisible(true);
 			this.deconnectedPanel.setVisible(false);
-			this.userName.setText(userName);
 		}
 	}
 
@@ -68,11 +71,15 @@ public class LoginViewImpl extends Composite implements LoginView {
 
 	@UiHandler("login")
 	public void login(ClickEvent event) {
-		delegate.login(name.getText(), password.getText());
+		if (delegate != null) {
+			delegate.login(name.getText(), password.getText());
+		}
 	}
 
 	@UiHandler("logout")
 	public void logout(ClickEvent event) {
-		delegate.logout();
+		if (delegate != null) {
+			delegate.logout();
+		}
 	}
 }

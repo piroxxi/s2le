@@ -25,6 +25,7 @@ public class LoginActivity extends AbstractActivity implements
 	@Override
 	public void start(AcceptsOneWidget panel, EventBus eventBus) {
 		panel.setWidget(view);
+		view.setDelegate(this);
 	}
 
 	@Override

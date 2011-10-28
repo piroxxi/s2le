@@ -1,8 +1,8 @@
-package fr.piroxxi.s2le.model.question;
+package fr.piroxxi.s2le.server.model.question;
 
-import fr.piroxxi.s2le.model.BasicEntity;
-import fr.piroxxi.s2le.model.Category;
-import fr.piroxxi.s2le.model.Difficulty;
+import fr.piroxxi.s2le.server.model.BasicEntity;
+import fr.piroxxi.s2le.server.model.Category;
+import fr.piroxxi.s2le.server.model.Difficulty;
 
 public abstract class Question extends BasicEntity {
 	private String creatorId;

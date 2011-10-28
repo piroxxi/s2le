@@ -1,6 +1,8 @@
-package fr.piroxxi.s2le.model;
+package fr.piroxxi.s2le.server.model;
 
 public class Category extends BasicEntity{
+	private static final long serialVersionUID = 1799251823246647817L;
+	
 	private String parentId;
 	private String type;
 

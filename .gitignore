@@ -1,14 +1,4 @@
-/.gwt/.gwt-log
-/gwt-unitCache/gwt-unitCache-000001332C2E45EE
-/gwt-unitCache/gwt-unitCache-000001332C6A7474
-/gwt-unitCache/gwt-unitCache-000001332C6CCC24
-/gwt-unitCache/gwt-unitCache-000001332C73565D
-/gwt-unitCache/gwt-unitCache-000001332C8743E2
-/gwt-unitCache/gwt-unitCache-0000013331C1DB39
-/.project
-/.settings/com.google.gdt.eclipse.core.prefs
-/.settings/com.google.gwt.eclipse.core.prefs
-/.classpath
 
-gwt/WEB-INF/classes
+/gwt-unitCache/
+/gwt/WEB-INF/classes/*
 

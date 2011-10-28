@@ -5,12 +5,12 @@ import java.util.List;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 
-import fr.piroxxi.s2le.model.Category;
-import fr.piroxxi.s2le.model.Difficulty;
-import fr.piroxxi.s2le.model.question.MultyChoicesQuestions;
-import fr.piroxxi.s2le.model.question.Question;
-import fr.piroxxi.s2le.model.question.Translation;
-import fr.piroxxi.s2le.model.question.YesNoQuestion;
+import fr.piroxxi.s2le.server.model.Category;
+import fr.piroxxi.s2le.server.model.Difficulty;
+import fr.piroxxi.s2le.server.model.question.MultyChoicesQuestion;
+import fr.piroxxi.s2le.server.model.question.Question;
+import fr.piroxxi.s2le.server.model.question.Translation;
+import fr.piroxxi.s2le.server.model.question.YesNoQuestion;
 import fr.piroxxi.s2le.storage.api.Filter;
 import fr.piroxxi.s2le.storage.api.Query;
 import fr.piroxxi.s2le.storage.api.Storage;
@@ -95,13 +95,13 @@ public class SimpleTestingApp {
 				true);
 		storage.store(Question.class, orangeIsAColor);
 
-		MultyChoicesQuestions whichWitchOrWhat = new MultyChoicesQuestions(
+		MultyChoicesQuestion whichWitchOrWhat = new MultyChoicesQuestion(
 				"piroxxi", grammaire, Difficulty.medium,
 				"Complete this sentence : '..... one do you prefer?'",
 				new String[] { "witch", "which", "what" }, 1);
 		storage.store(Question.class, whichWitchOrWhat);
 
-		MultyChoicesQuestions manyMuch = new MultyChoicesQuestions(
+		MultyChoicesQuestion manyMuch = new MultyChoicesQuestion(
 				"piroxxi",
 				grammaire,
 				Difficulty.medium,

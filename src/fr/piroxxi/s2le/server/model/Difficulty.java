@@ -1,4 +1,4 @@
-package fr.piroxxi.s2le.model;
+package fr.piroxxi.s2le.server.model;
 
 public enum Difficulty {
 	verySimple("Very Simple"),

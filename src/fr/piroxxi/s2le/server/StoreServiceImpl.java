@@ -1,47 +1,55 @@
-package testingApp.activity.test;
+package fr.piroxxi.s2le.server;
 
 import java.util.List;
 
-import javax.swing.JPanel;
+import com.google.gwt.user.server.rpc.RemoteServiceServlet;
+import com.google.inject.Guice;
+import com.google.inject.Injector;
 
-import testingApp.ui.Activity;
-import testingApp.ui.placeControler.PlaceControler;
-
-import com.google.inject.Inject;
-
+import fr.piroxxi.s2le.server.injector.ServerModule;
 import fr.piroxxi.s2le.server.model.Category;
 import fr.piroxxi.s2le.server.model.Difficulty;
 import fr.piroxxi.s2le.server.model.Test;
 import fr.piroxxi.s2le.server.model.question.Question;
+import fr.piroxxi.s2le.server.security.SessionManager;
+import fr.piroxxi.s2le.shared.StoreService;
+import fr.piroxxi.s2le.shared.security.LogginException;
 import fr.piroxxi.s2le.storage.api.Filter;
 import fr.piroxxi.s2le.storage.api.Query;
 import fr.piroxxi.s2le.storage.api.Storage;
 
-public class TestConfigurationActivity extends Activity implements
-		TestConfigurationView.Delegate {
+@SuppressWarnings("serial")
+public class StoreServiceImpl extends RemoteServiceServlet implements
+		StoreService {
 
-	private final TestConfigurationView view;
-	private final Storage storage;
-	private final PlaceControler placeControler;
+	private Storage storage;
+	private SessionManager sessionManager;
 
-	@Inject
-	public TestConfigurationActivity(PlaceControler placeControler,
-			Storage storage, TestConfigurationView view) {
-		this.placeControler = placeControler;
-		this.storage = storage;
-		this.view = view;
+	public StoreServiceImpl() {
+		Injector injector = Guice.createInjector(new ServerModule());
+		this.storage = injector.getInstance(Storage.class);
+		this.sessionManager = injector.getInstance(SessionManager.class);
+
 	}
 
 	@Override
-	public void startActivity(JPanel panel) {
-		panel.removeAll();
-		view.setDelegate(this);
-		panel.add(view);
+	public List<Category> getCategories(String session)
+			throws IllegalArgumentException, LogginException {
+		if (!sessionManager.isValide(session)) {
+			throw new LogginException();
+		}
+
+		return null;
 	}
 
 	@Override
-	public void startTest(final List<Difficulty> difficulties,
-			final List<Category> categories, int number, boolean chrono) {
+	public Test createTest(String session, final List<Difficulty> difficulties,
+			final List<Category> categories, int number, boolean chrono)
+			throws IllegalArgumentException, LogginException {
+		if (!sessionManager.isValide(session)) {
+			throw new LogginException();
+		}
+
 		System.out.println("creation du nouvel objet test");
 
 		Query<Question> query = storage.createQuery(Question.class);
@@ -77,6 +85,7 @@ public class TestConfigurationActivity extends Activity implements
 		}
 
 		Test test = new Test(questions, chrono);
-		placeControler.goTo(new TestPlace(test));
+		return test;
 	}
+
 }

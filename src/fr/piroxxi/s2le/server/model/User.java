@@ -1,7 +1,8 @@
-package fr.piroxxi.s2le.model;
+package fr.piroxxi.s2le.server.model;
 
 public class User extends BasicEntity {
-
+	private static final long serialVersionUID = -6045505019801539144L;
+	
 	private String name;
 	private String password; // crypted
 	private String email;

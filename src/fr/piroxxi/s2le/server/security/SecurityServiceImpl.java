@@ -1,12 +1,11 @@
-package fr.piroxxi.s2le.server;
+package fr.piroxxi.s2le.server.security;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 
-import fr.piroxxi.s2le.model.User;
 import fr.piroxxi.s2le.server.injector.ServerModule;
-import fr.piroxxi.s2le.server.security.SessionManager;
+import fr.piroxxi.s2le.server.model.User;
 import fr.piroxxi.s2le.shared.security.SecurityService;
 import fr.piroxxi.s2le.storage.api.Storage;
 

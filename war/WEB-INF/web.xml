@@ -7,12 +7,22 @@
 	<!-- Servlets -->
 	<servlet>
 		<servlet-name>securityServlet</servlet-name>
-		<servlet-class>fr.piroxxi.s2le.server.SecurityServiceImpl</servlet-class>
+		<servlet-class>fr.piroxxi.s2le.server.security.SecurityServiceImpl</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>securityServlet</servlet-name>
 		<url-pattern>/s2le/security</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>storeServlet</servlet-name>
+		<servlet-class>fr.piroxxi.s2le.server.StoreServiceImpl</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>storeServlet</servlet-name>
+		<url-pattern>/s2le/store</url-pattern>
 	</servlet-mapping>
 
 	<!-- Default page to serve -->

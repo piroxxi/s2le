@@ -14,7 +14,7 @@ import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.google.inject.Singleton;
 
-import fr.piroxxi.s2le.model.Test;
+import fr.piroxxi.s2le.server.model.Test;
 
 @Singleton
 public class PlaceControlerImpl implements PlaceControler {

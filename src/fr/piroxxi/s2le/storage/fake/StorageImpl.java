@@ -7,8 +7,8 @@ import java.util.UUID;
 
 import com.google.gwt.dev.util.collect.Lists;
 
-import fr.piroxxi.s2le.model.BasicEntity;
-import fr.piroxxi.s2le.model.User;
+import fr.piroxxi.s2le.server.model.BasicEntity;
+import fr.piroxxi.s2le.server.model.User;
 import fr.piroxxi.s2le.storage.api.Query;
 import fr.piroxxi.s2le.storage.api.Storage;
 

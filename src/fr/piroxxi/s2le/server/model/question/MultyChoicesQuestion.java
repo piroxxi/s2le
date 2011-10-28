@@ -1,14 +1,14 @@
-package fr.piroxxi.s2le.model.question;
+package fr.piroxxi.s2le.server.model.question;
 
-import fr.piroxxi.s2le.model.Category;
-import fr.piroxxi.s2le.model.Difficulty;
+import fr.piroxxi.s2le.server.model.Category;
+import fr.piroxxi.s2le.server.model.Difficulty;
 
-public class MultyChoicesQuestions extends Question {
+public class MultyChoicesQuestion extends Question {
 	private String question;
 	private String[] answers;
 	private int rightAnswer;
 
-	public MultyChoicesQuestions(String creator, Category category,
+	public MultyChoicesQuestion(String creator, Category category,
 			Difficulty difficulty, String question, String[] answers,
 			int rightAnswer) {
 		super(creator, category, difficulty);

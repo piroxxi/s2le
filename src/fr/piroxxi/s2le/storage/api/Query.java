@@ -2,7 +2,7 @@ package fr.piroxxi.s2le.storage.api;
 
 import java.util.List;
 
-import fr.piroxxi.s2le.model.BasicEntity;
+import fr.piroxxi.s2le.server.model.BasicEntity;
 
 public interface Query<T extends BasicEntity> {
 

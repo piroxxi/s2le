@@ -1,6 +1,11 @@
-package fr.piroxxi.s2le.model;
+package fr.piroxxi.s2le.server.model;
 
-public class BasicEntity {
+import java.io.Serializable;
+
+
+public class BasicEntity implements Serializable{
+	private static final long serialVersionUID = -6142397814553223400L;
+	
 	private String id;
 	private Long version;
 

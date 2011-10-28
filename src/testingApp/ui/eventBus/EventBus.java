@@ -1,7 +1,6 @@
 package testingApp.ui.eventBus;
 
 import com.google.inject.ImplementedBy;
-import com.google.inject.Singleton;
 
 @ImplementedBy(EventBusImpl.class)
 public interface EventBus {

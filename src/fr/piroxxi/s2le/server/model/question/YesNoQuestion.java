@@ -1,7 +1,7 @@
-package fr.piroxxi.s2le.model.question;
+package fr.piroxxi.s2le.server.model.question;
 
-import fr.piroxxi.s2le.model.Category;
-import fr.piroxxi.s2le.model.Difficulty;
+import fr.piroxxi.s2le.server.model.Category;
+import fr.piroxxi.s2le.server.model.Difficulty;
 
 public class YesNoQuestion extends Question {
 	private String question;

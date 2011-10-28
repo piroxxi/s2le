@@ -3,12 +3,14 @@ package testingApp.activity.test.panels;
 import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
-import fr.piroxxi.s2le.model.question.Translation;
+import fr.piroxxi.s2le.server.model.question.Translation;
 
 public class TranslationPanel extends QuestionPanel<Translation> implements
 		ActionListener {
@@ -17,18 +19,27 @@ public class TranslationPanel extends QuestionPanel<Translation> implements
 	private Translation question;
 
 	private Label questionText;
+	private Label errorLabel;
 	private JTextField answer;
 	private JButton accept;
 
 	public TranslationPanel(boolean chrono) {
+		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+		
 		this.questionText = new Label();
+		
 		answer = new JTextField();
 		answer.addActionListener(this);
+
+		errorLabel = new Label();
+		
 		accept = new JButton("ok");
 		accept.addActionListener(this);
 
+		
 		this.add(questionText);
 		this.add(answer);
+		this.add(errorLabel);
 		this.add(accept);
 	}
 
@@ -36,18 +47,33 @@ public class TranslationPanel extends QuestionPanel<Translation> implements
 	public void showQuestion(Translation question) {
 		this.question = question;
 		questionText.setText("What's the english for '"
-				+ question.getFrenchWord().replaceAll("\\(.*?\\)", "").replace("  "," ") + "'");
+				+ question.getFrenchWord().replaceAll("\\(.*?\\)", "")
+						.replace("  ", " ") + "'");
 		answer.setColumns(question.getEnglishWord().length() + 5);
 	}
 
+	private boolean answered = false;
+
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		System.out.println("\nOn a eut '"+answer.getText()+"'");
-		System.out.println("\nOn vaoulait '"+question.getEnglishWord()+"'");
+		Matcher matcher = Pattern.compile(
+				question.getEnglishWord().toLowerCase().replace(")", "|)")
+						.replace(" ", " ?")).matcher(
+				answer.getText().toLowerCase());
 
-		Pattern pattern =  Pattern.compile(question.getEnglishWord());
-		
-		this.delegate.hasAnswered(true);
+		if (answered) {
+			this.delegate.hasAnswered(matcher.find());
+		} else {
+			if (matcher.find()) {
+				errorLabel.setText("bonne reponse!");
+			} else {
+				errorLabel.setText("Faux! La phrase attendue était "
+						+ question.getEnglishWord().toLowerCase().replaceAll("\\(.*?\\)", "")
+						+ " !");
+			}
+			answer.setEditable(false);
+			accept.setText("next");
+			answered = true;
+		}
 	}
-
 }
