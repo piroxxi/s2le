@@ -1,12 +1,18 @@
-package fr.piroxxi.s2le.server.model.question;
+package fr.piroxxi.s2le.shared.model.question;
 
-import fr.piroxxi.s2le.server.model.Category;
-import fr.piroxxi.s2le.server.model.Difficulty;
+import fr.piroxxi.s2le.shared.model.Category;
+import fr.piroxxi.s2le.shared.model.Difficulty;
 
 public class MultyChoicesQuestion extends Question {
+	private static final long serialVersionUID = 1288922550508528223L;
+
 	private String question;
 	private String[] answers;
 	private int rightAnswer;
+
+	public MultyChoicesQuestion() {
+		super();
+	}
 
 	public MultyChoicesQuestion(String creator, Category category,
 			Difficulty difficulty, String question, String[] answers,

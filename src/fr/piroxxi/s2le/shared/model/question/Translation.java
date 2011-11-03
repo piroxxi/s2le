@@ -1,11 +1,17 @@
-package fr.piroxxi.s2le.server.model.question;
+package fr.piroxxi.s2le.shared.model.question;
 
-import fr.piroxxi.s2le.server.model.Category;
-import fr.piroxxi.s2le.server.model.Difficulty;
+import fr.piroxxi.s2le.shared.model.Category;
+import fr.piroxxi.s2le.shared.model.Difficulty;
 
 public class Translation extends Question {
+	private static final long serialVersionUID = -2403937865476180974L;
+
 	private String englishWord;
 	private String frenchWord;
+
+	public Translation() {
+		super();
+	}
 
 	public Translation(String creatorId, Category category,
 			Difficulty difficulty, String englishWord, String frenchWord) {

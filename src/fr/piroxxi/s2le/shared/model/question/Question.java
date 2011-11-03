@@ -1,13 +1,19 @@
-package fr.piroxxi.s2le.server.model.question;
+package fr.piroxxi.s2le.shared.model.question;
 
-import fr.piroxxi.s2le.server.model.BasicEntity;
-import fr.piroxxi.s2le.server.model.Category;
-import fr.piroxxi.s2le.server.model.Difficulty;
+import fr.piroxxi.s2le.shared.model.BasicEntity;
+import fr.piroxxi.s2le.shared.model.Category;
+import fr.piroxxi.s2le.shared.model.Difficulty;
 
 public abstract class Question extends BasicEntity {
+	private static final long serialVersionUID = -3292979156897538299L;
+
 	private String creatorId;
 	private Category category;
 	private Difficulty difficulty;
+
+	public Question() {
+
+	}
 
 	public Question(String creatorId, Category category, Difficulty difficulty) {
 		this.creatorId = creatorId;

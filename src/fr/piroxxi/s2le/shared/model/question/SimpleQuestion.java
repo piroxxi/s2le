@@ -1,14 +1,20 @@
-package fr.piroxxi.s2le.server.model.question;
+package fr.piroxxi.s2le.shared.model.question;
 
-import fr.piroxxi.s2le.server.model.Category;
-import fr.piroxxi.s2le.server.model.Difficulty;
+import fr.piroxxi.s2le.shared.model.Category;
+import fr.piroxxi.s2le.shared.model.Difficulty;
 
 /**
  * A question which answer is a word.
  */
 public class SimpleQuestion extends Question {
+	private static final long serialVersionUID = 878222614771232197L;
+
 	private String question;
 	private String answer;
+
+	public SimpleQuestion() {
+		super();
+	}
 
 	public SimpleQuestion(String creator, Category category,
 			Difficulty difficulty, String question, String answer) {

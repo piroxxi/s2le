@@ -1,11 +1,17 @@
-package fr.piroxxi.s2le.server.model.question;
+package fr.piroxxi.s2le.shared.model.question;
 
-import fr.piroxxi.s2le.server.model.Category;
-import fr.piroxxi.s2le.server.model.Difficulty;
+import fr.piroxxi.s2le.shared.model.Category;
+import fr.piroxxi.s2le.shared.model.Difficulty;
 
 public class YesNoQuestion extends Question {
+	private static final long serialVersionUID = -2643435622228176861L;
+
 	private String question;
 	private boolean answer;
+
+	public YesNoQuestion() {
+		super();
+	}
 
 	public YesNoQuestion(String creator, Category category,
 			Difficulty difficulty, String question, boolean answer) {
