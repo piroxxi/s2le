@@ -1,6 +1,6 @@
 package fr.piroxxi.s2le.storage.api;
 
-import fr.piroxxi.s2le.server.model.BasicEntity;
+import fr.piroxxi.s2le.shared.model.BasicEntity;
 
 public interface Storage {
 

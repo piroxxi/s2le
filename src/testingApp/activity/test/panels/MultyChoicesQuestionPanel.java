@@ -8,7 +8,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import fr.piroxxi.s2le.server.model.question.MultyChoicesQuestion;
+import fr.piroxxi.s2le.shared.model.question.MultyChoicesQuestion;
 
 public class MultyChoicesQuestionPanel extends
 		QuestionPanel<MultyChoicesQuestion> implements ActionListener {

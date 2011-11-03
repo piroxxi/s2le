@@ -1,0 +1,24 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:a="urn:import:fr.piroxxi.s2le.client.asside">
+	<ui:style>
+		.sponsor {
+			border: 0em;
+			width: 20em;
+			height: 6em;
+			float: right;
+			display: inline;
+		}
+	</ui:style>
+
+	<g:HTMLPanel>
+		<div class="leftPanel">
+			<g:HTMLPanel ui:field="createAccount">
+				<g:Button ui:field="create">Créer un nouveau compte</g:Button>
+			</g:HTMLPanel>
+			<g:HTMLPanel ui:field="userStatsPanel">
+				<a:UserStatsPanel ui:field="userStats" />
+			</g:HTMLPanel>
+		</div>
+	</g:HTMLPanel>
+</ui:UiBinder>

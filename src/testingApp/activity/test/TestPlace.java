@@ -1,7 +1,7 @@
 package testingApp.activity.test;
 
-import fr.piroxxi.s2le.server.model.Test;
 import testingApp.ui.placeControler.Place;
+import fr.piroxxi.s2le.shared.model.Test;
 
 public class TestPlace extends Place {
 	private Test test;

@@ -18,11 +18,11 @@ import testingApp.ui.placeControler.PlaceControler;
 
 import com.google.inject.Inject;
 
-import fr.piroxxi.s2le.server.model.Test;
-import fr.piroxxi.s2le.server.model.question.MultyChoicesQuestion;
-import fr.piroxxi.s2le.server.model.question.Question;
-import fr.piroxxi.s2le.server.model.question.Translation;
-import fr.piroxxi.s2le.server.model.question.YesNoQuestion;
+import fr.piroxxi.s2le.shared.model.Test;
+import fr.piroxxi.s2le.shared.model.question.MultyChoicesQuestion;
+import fr.piroxxi.s2le.shared.model.question.Question;
+import fr.piroxxi.s2le.shared.model.question.Translation;
+import fr.piroxxi.s2le.shared.model.question.YesNoQuestion;
 
 public class TestExecutionActivity extends Activity implements Delegate {
 

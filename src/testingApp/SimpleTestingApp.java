@@ -5,12 +5,12 @@ import java.util.List;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 
-import fr.piroxxi.s2le.server.model.Category;
-import fr.piroxxi.s2le.server.model.Difficulty;
-import fr.piroxxi.s2le.server.model.question.MultyChoicesQuestion;
-import fr.piroxxi.s2le.server.model.question.Question;
-import fr.piroxxi.s2le.server.model.question.Translation;
-import fr.piroxxi.s2le.server.model.question.YesNoQuestion;
+import fr.piroxxi.s2le.shared.model.Category;
+import fr.piroxxi.s2le.shared.model.Difficulty;
+import fr.piroxxi.s2le.shared.model.question.MultyChoicesQuestion;
+import fr.piroxxi.s2le.shared.model.question.Question;
+import fr.piroxxi.s2le.shared.model.question.Translation;
+import fr.piroxxi.s2le.shared.model.question.YesNoQuestion;
 import fr.piroxxi.s2le.storage.api.Filter;
 import fr.piroxxi.s2le.storage.api.Query;
 import fr.piroxxi.s2le.storage.api.Storage;

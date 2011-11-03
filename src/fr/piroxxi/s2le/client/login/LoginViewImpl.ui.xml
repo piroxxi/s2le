@@ -1,20 +1,35 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
 	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	
 
+	<ui:style>
+		.loginPanel {
+			font-size: 10pt;
+		}
+		
+		.textBox {
+			height: 14px;
+			width: 84px;
+		}
+	</ui:style>
 
-	<g:HTMLPanel>
+	<g:HTMLPanel styleName="{style.loginPanel}">
 		<g:HTMLPanel ui:field='connectedPanel'>
 			Login :
-			<g:TextBox ui:field='name' />
+			<g:TextBox styleName="{style.textBox}" ui:field='name' />
 			Password :
-			<g:PasswordTextBox ui:field='password' />
+			<g:PasswordTextBox styleName="{style.textBox}"
+				ui:field='password' />
 			<g:Button ui:field='login'>login</g:Button>
 		</g:HTMLPanel>
 		<g:HTMLPanel ui:field='deconnectedPanel'>
-			Bienvenu
-			<g:Label ui:field='userName' />
-			.
-			<g:Button ui:field='logout'>logout</g:Button>
+			<g:HorizontalPanel>
+				<g:Label>Bienvenu&nbsp;</g:Label>
+				<g:Label ui:field='userName' />
+				<g:Label>&nbsp;.&nbsp;</g:Label>
+				<g:Button ui:field='logout'>logout</g:Button>
+			</g:HorizontalPanel>
 		</g:HTMLPanel>
 	</g:HTMLPanel>
 </ui:UiBinder>

@@ -1,19 +1,18 @@
 package fr.piroxxi.s2le.client.login;
 
-import com.google.gwt.user.client.ui.IsWidget;
 import com.google.inject.ImplementedBy;
 
-@ImplementedBy(LoginViewImpl.class)
-public interface LoginView extends IsWidget {
-	void setConnectedUser(String userName);
+import fr.piroxxi.s2le.client.ui.View;
 
-	void setDelegate(Delegate delegate);
+@ImplementedBy(LoginViewImpl.class)
+public interface LoginView extends View<LoginView.Delegate> {
+	void setConnectedUser(String userName);
 
 	/**
 	 * Delegate used by the View to communicate with the Activity using the
 	 * view.
 	 */
-	public interface Delegate {
+	public interface Delegate extends View.Delegate{
 		/**
 		 * Login
 		 * 

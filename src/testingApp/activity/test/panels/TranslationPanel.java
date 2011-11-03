@@ -10,7 +10,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
-import fr.piroxxi.s2le.server.model.question.Translation;
+import fr.piroxxi.s2le.shared.model.question.Translation;
 
 public class TranslationPanel extends QuestionPanel<Translation> implements
 		ActionListener {

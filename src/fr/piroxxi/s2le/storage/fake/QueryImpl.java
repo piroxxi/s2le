@@ -3,7 +3,7 @@ package fr.piroxxi.s2le.storage.fake;
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.piroxxi.s2le.server.model.BasicEntity;
+import fr.piroxxi.s2le.shared.model.BasicEntity;
 import fr.piroxxi.s2le.storage.api.Filter;
 import fr.piroxxi.s2le.storage.api.Query;
 

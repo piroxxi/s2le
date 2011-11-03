@@ -1,0 +1,10 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:a="urn:import:fr.piroxxi.s2le.client.asside">
+
+	<g:HTMLPanel>
+		Utilisateur : <g:Label ui:field="userName" /><g:Button ui:field="more">see more</g:Button><br/>
+		Nombres de questions repondues : <g:Label ui:field="nbAnswer" /><br/>
+		Nombres de bonnes reponces : <g:Label ui:field="nbGoodAnswer" /><br/>
+	</g:HTMLPanel>
+</ui:UiBinder>

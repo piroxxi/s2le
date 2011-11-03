@@ -1,0 +1,18 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+
+	<g:HorizontalPanel>
+		<g:HTMLPanel>
+			Bienvenue dans cette magnifique (si si) application qui
+			va vous
+			permettre d'apprendre l'anglais facilement.
+			<br />
+			Amusez vous bien!
+		</g:HTMLPanel>
+		<g:HTMLPanel>
+			Vous pouvez créer un compte facilement en cliquant ici:
+			<g:Button ui:field="creerCompte">Créer un compte</g:Button>
+		</g:HTMLPanel>
+	</g:HorizontalPanel>
+</ui:UiBinder>

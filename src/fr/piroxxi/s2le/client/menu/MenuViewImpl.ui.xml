@@ -1,0 +1,21 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:a="urn:import:fr.piroxxi.s2le.client.asside">
+	<ui:style>
+		.menuItem {
+			background: blue;
+			width: 100%;
+		}
+		
+		.menu {
+			width: 100%;
+		}
+	</ui:style>
+
+	<g:HorizontalPanel styleName="{style.menu}">
+		<g:Button ui:field="questions" styleName="{style.menuItem}">Liste des question</g:Button>
+		<g:Button ui:field="startTest" styleName="{style.menuItem}">Commencer un test</g:Button>
+		<g:Button ui:field="statistiques" styleName="{style.menuItem}">Voir mes
+			statistiques</g:Button>
+	</g:HorizontalPanel>
+</ui:UiBinder>
