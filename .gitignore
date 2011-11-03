@@ -1,4 +1,6 @@
 
 /gwt-unitCache/
-/gwt/WEB-INF/classes/*
-
+/war/WEB-INF/classes/*
+/war/WEB-INF/deploy/s2le/*
+*.gwt.rpc
+/.gwt/.gwt-log
