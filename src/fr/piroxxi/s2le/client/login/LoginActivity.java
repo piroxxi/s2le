@@ -8,6 +8,8 @@ import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.google.inject.Inject;
 
 import fr.piroxxi.s2le.client.ClientFactory;
+import fr.piroxxi.s2le.client.events.LoggedInEvent;
+import fr.piroxxi.s2le.client.events.LoggedOutEvent;
 
 public class LoginActivity extends AbstractActivity implements
 		LoginView.Delegate {
@@ -36,13 +38,13 @@ public class LoginActivity extends AbstractActivity implements
 				new AsyncCallback<String>() {
 
 					@Override
-					public void onSuccess(String result) {
-						if (result != null) {
-							// TODO(raphael) Peut être que la on devrait
-							// recevoir un
-							// objet session, avec quelques infos sur
-							// l'utilisateur.
+					public void onSuccess(String sessionId) {
+						if (sessionId != null) {
+							factory.getSessionManager().setLoggedIn(userName,
+									sessionId);
 							view.setConnectedUser(userName);
+							factory.getEventBus()
+									.fireEvent(new LoggedInEvent());
 						} else {
 							Window.alert("Wrong username or password!");
 						}
@@ -57,8 +59,9 @@ public class LoginActivity extends AbstractActivity implements
 
 	@Override
 	public void logout() {
+		factory.getSessionManager().setLoggedOut();
 		view.setConnectedUser(null);
-		// TODO(raphael) mettre en place un vrai logout.
+		factory.getEventBus().fireEvent(new LoggedOutEvent());
 	}
 
 }

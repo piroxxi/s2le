@@ -23,7 +23,7 @@ public class ErrorActivity extends AbstractActivity implements
 
 	@Override
 	public void start(AcceptsOneWidget panel, EventBus eventBus) {
-		panel.setWidget(new Label("Vous avez eu un erreure "
-				+ place.getMessage()));
+		panel.setWidget(new Label("Vous avez eu un erreure \""
+				+ place.getMessage() + "\""));
 	}
 }

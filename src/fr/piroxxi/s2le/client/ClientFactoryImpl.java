@@ -19,6 +19,7 @@ import fr.piroxxi.s2le.client.test.TestRunningView;
 import fr.piroxxi.s2le.client.test.TestRunningViewImpl;
 import fr.piroxxi.s2le.client.test.liste.ListeQuestionsView;
 import fr.piroxxi.s2le.client.test.liste.ListeQuestionsViewImpl;
+import fr.piroxxi.s2le.client.ui.SessionManager;
 import fr.piroxxi.s2le.shared.StoreService;
 import fr.piroxxi.s2le.shared.StoreServiceAsync;
 import fr.piroxxi.s2le.shared.security.SecurityService;
@@ -28,6 +29,7 @@ public class ClientFactoryImpl implements ClientFactory {
 	private final SimpleEventBus eventBus = new SimpleEventBus();
 	private final PlaceController placeController = new PlaceController(
 			(com.google.web.bindery.event.shared.EventBus) eventBus);
+	private final SessionManager sessionManager = new SessionManager(this);
 
 	// services
 	private SecurityServiceAsync securityServiceAsync = GWT
@@ -41,8 +43,6 @@ public class ClientFactoryImpl implements ClientFactory {
 	private final ListeQuestionsView listeTestView = new ListeQuestionsViewImpl();
 	private final HelloView helloView = new HelloViewImpl();
 	private final MenuView menuView = new MenuViewImpl();
-	private final CreateTestView createTestView = new CreateTestViewImpl();
-	private final TestRunningView testRunningView = new TestRunningViewImpl();
 
 	@Override
 	public EventBus getEventBus() {
@@ -91,11 +91,16 @@ public class ClientFactoryImpl implements ClientFactory {
 
 	@Override
 	public CreateTestView getCreateTestView() {
-		return createTestView;
+		return new CreateTestViewImpl();
 	}
 
 	@Override
 	public TestRunningView getTestRunningView() {
-		return testRunningView;
+		return new TestRunningViewImpl();
+	}
+
+	@Override
+	public SessionManager getSessionManager() {
+		return sessionManager;
 	}
 }

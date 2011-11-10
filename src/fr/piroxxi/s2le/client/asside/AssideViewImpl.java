@@ -9,7 +9,7 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Widget;
 
-import fr.piroxxi.s2le.shared.model.UserStats;
+import fr.piroxxi.s2le.model.User;
 
 public class AssideViewImpl extends Composite implements AssideView {
 	interface MyUiBinder extends UiBinder<Widget, AssideViewImpl> {
@@ -23,9 +23,9 @@ public class AssideViewImpl extends Composite implements AssideView {
 	HTMLPanel userStatsPanel;
 	@UiField
 	UserStatsPanel userStats;
-	
-//	@UiField
-//    Frame sponsor;
+
+	// @UiField
+	// Frame sponsor;
 
 	private Delegate delegate;
 
@@ -35,10 +35,10 @@ public class AssideViewImpl extends Composite implements AssideView {
 	}
 
 	@Override
-	public void showUserStats(UserStats userStats) {
+	public void showUserStats(User user) {
 		userStatsPanel.setVisible(true);
 		createAccount.setVisible(false);
-		this.userStats.showUserStats(userStats);
+		this.userStats.showUserStats(user);
 	}
 
 	@Override
@@ -52,7 +52,6 @@ public class AssideViewImpl extends Composite implements AssideView {
 		this.delegate = delegate;
 		userStats.setDelegate(delegate);
 	}
-	
 
 	@UiHandler("create")
 	public void logout(ClickEvent event) {

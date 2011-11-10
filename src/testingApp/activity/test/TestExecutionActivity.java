@@ -18,11 +18,11 @@ import testingApp.ui.placeControler.PlaceControler;
 
 import com.google.inject.Inject;
 
-import fr.piroxxi.s2le.shared.model.Test;
-import fr.piroxxi.s2le.shared.model.question.MultyChoicesQuestion;
-import fr.piroxxi.s2le.shared.model.question.Question;
-import fr.piroxxi.s2le.shared.model.question.Translation;
-import fr.piroxxi.s2le.shared.model.question.YesNoQuestion;
+import fr.piroxxi.s2le.model.Test;
+import fr.piroxxi.s2le.model.question.MultiChoicesQuestion;
+import fr.piroxxi.s2le.model.question.Question;
+import fr.piroxxi.s2le.model.question.Translation;
+import fr.piroxxi.s2le.model.question.YesNoQuestion;
 
 public class TestExecutionActivity extends Activity implements Delegate {
 
@@ -52,6 +52,7 @@ public class TestExecutionActivity extends Activity implements Delegate {
 		}
 	}
 
+	@SuppressWarnings("deprecation")
 	private void nextQuestion() {
 		currentQuestion = test.getNextQuestion();
 		if (currentQuestion != null) {
@@ -67,9 +68,9 @@ public class TestExecutionActivity extends Activity implements Delegate {
 				panel.setDelegate(this);
 				thisPanel.removeAll();
 				thisPanel.add(panel);
-			} else if (currentQuestion instanceof MultyChoicesQuestion) {
+			} else if (currentQuestion instanceof MultiChoicesQuestion) {
 				MultyChoicesQuestionPanel panel = new MultyChoicesQuestionPanel(test.chrono());
-				panel.showQuestion((MultyChoicesQuestion) currentQuestion);
+				panel.showQuestion((MultiChoicesQuestion) currentQuestion);
 				panel.setDelegate(this);
 				thisPanel.removeAll();
 				thisPanel.add(panel);
@@ -111,6 +112,7 @@ public class TestExecutionActivity extends Activity implements Delegate {
 		placeControler.goTo(null);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public void hasAnswered(boolean wasAnswerGood) {
 		if (wasAnswerGood){

@@ -9,11 +9,11 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 
-import fr.piroxxi.s2le.shared.model.UserStats;
+import fr.piroxxi.s2le.model.User;
 
 public class UserStatsPanel extends Composite {
 	public interface Delegate {
-		void viewUser(UserStats userStats);
+		void viewUser(User userStats);
 	}
 
 	interface MyUiBinder extends UiBinder<Widget, UserStatsPanel> {
@@ -30,17 +30,17 @@ public class UserStatsPanel extends Composite {
 
 	private Delegate delegate;
 
-	private UserStats userStats;
+	private User user;
 
 	public UserStatsPanel() {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 
-	public void showUserStats(UserStats userStats) {
-		this.userStats = userStats;
-		userName.setText(userStats.getUserName());
-		nbAnswer.setText(userStats.getTotalQuestion() + "");
-		nbGoodAnswer.setText(userStats.getBonnesReponses() + "");
+	public void showUserStats(User user) {
+		this.user = user;
+		userName.setText(user.getName());
+		nbAnswer.setText(user.getNbQuestionsRepondues() + "");
+		nbGoodAnswer.setText(user.getNbQuestionsJustes() + "");
 	}
 
 	public void setDelegate(Delegate delegate) {
@@ -50,7 +50,7 @@ public class UserStatsPanel extends Composite {
 	@UiHandler("more")
 	public void logout(ClickEvent event) {
 		if (delegate != null) {
-			delegate.viewUser(userStats);
+			delegate.viewUser(user);
 		}
 	}
 }

@@ -17,7 +17,7 @@ import javax.swing.JPanel;
 
 import testingApp.RefreshingEvent;
 import testingApp.ui.eventBus.EventBus;
-import fr.piroxxi.s2le.shared.model.Category;
+import fr.piroxxi.s2le.model.Category;
 import fr.piroxxi.s2le.storage.api.Filter;
 import fr.piroxxi.s2le.storage.api.Query;
 import fr.piroxxi.s2le.storage.api.Storage;

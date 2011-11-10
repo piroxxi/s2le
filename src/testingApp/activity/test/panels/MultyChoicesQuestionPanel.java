@@ -8,10 +8,10 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import fr.piroxxi.s2le.shared.model.question.MultyChoicesQuestion;
+import fr.piroxxi.s2le.model.question.MultiChoicesQuestion;
 
 public class MultyChoicesQuestionPanel extends
-		QuestionPanel<MultyChoicesQuestion> implements ActionListener {
+		QuestionPanel<MultiChoicesQuestion> implements ActionListener {
 	private static final long serialVersionUID = -2344240871400232325L;
 
 	private Label questionText;
@@ -20,7 +20,7 @@ public class MultyChoicesQuestionPanel extends
 	private JButton next;
 	private JPanel p;
 
-	private MultyChoicesQuestion question;
+	private MultiChoicesQuestion question;
 
 	public MultyChoicesQuestionPanel(boolean chronometre) {
 		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
@@ -42,7 +42,7 @@ public class MultyChoicesQuestionPanel extends
 	}
 
 	@Override
-	public void showQuestion(MultyChoicesQuestion question) {
+	public void showQuestion(MultiChoicesQuestion question) {
 		this.question = question;
 		this.questionText.setText(question.getQuestion());
 		p.removeAll();

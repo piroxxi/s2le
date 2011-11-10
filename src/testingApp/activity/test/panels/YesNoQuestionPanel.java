@@ -8,7 +8,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import fr.piroxxi.s2le.shared.model.question.YesNoQuestion;
+import fr.piroxxi.s2le.model.question.YesNoQuestion;
 
 public class YesNoQuestionPanel extends QuestionPanel<YesNoQuestion> implements
 		ActionListener {

@@ -20,8 +20,8 @@ import testingApp.ui.widget.CategorySelector;
 
 import com.google.inject.Inject;
 
-import fr.piroxxi.s2le.shared.model.Category;
-import fr.piroxxi.s2le.shared.model.Difficulty;
+import fr.piroxxi.s2le.model.Category;
+import fr.piroxxi.s2le.model.Difficulty;
 import fr.piroxxi.s2le.storage.api.Storage;
 
 public class TestConfigurationView extends JPanel implements ActionListener {

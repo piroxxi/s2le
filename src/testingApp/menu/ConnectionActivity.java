@@ -8,7 +8,7 @@ import testingApp.ui.eventBus.EventBus;
 
 import com.google.inject.Inject;
 
-import fr.piroxxi.s2le.shared.model.User;
+import fr.piroxxi.s2le.model.User;
 import fr.piroxxi.s2le.storage.api.Storage;
 
 public class ConnectionActivity extends Activity implements

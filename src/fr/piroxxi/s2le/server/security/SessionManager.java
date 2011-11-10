@@ -75,4 +75,8 @@ public class SessionManager {
 				+ TEN_MINUTES));
 		return true;
 	}
+
+	public String getUserId(String sessionId) {
+		return sessions.get(sessionId);
+	}
 }

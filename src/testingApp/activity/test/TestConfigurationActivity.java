@@ -9,10 +9,10 @@ import testingApp.ui.placeControler.PlaceControler;
 
 import com.google.inject.Inject;
 
-import fr.piroxxi.s2le.shared.model.Category;
-import fr.piroxxi.s2le.shared.model.Difficulty;
-import fr.piroxxi.s2le.shared.model.Test;
-import fr.piroxxi.s2le.shared.model.question.Question;
+import fr.piroxxi.s2le.model.Category;
+import fr.piroxxi.s2le.model.Difficulty;
+import fr.piroxxi.s2le.model.Test;
+import fr.piroxxi.s2le.model.question.Question;
 import fr.piroxxi.s2le.storage.api.Filter;
 import fr.piroxxi.s2le.storage.api.Query;
 import fr.piroxxi.s2le.storage.api.Storage;

@@ -25,14 +25,21 @@ public class ApplicationActivityMapper implements ActivityMapper {
 
 	@Override
 	public Activity getActivity(Place place) {
+		
 		if (place instanceof HelloPlace) {
 			return new HelloActivity(clientFactory);
+			
 		} else if (place instanceof CreateTestPlace) {
 			return new CreateTestActivity(clientFactory);
+			
 		} else if (place instanceof TestPlace) {
 			return new TestRunningActivity(clientFactory, (TestPlace) place);
+			
 		} else if (place instanceof ListeQuestionsPlace) {
 			return new ListeQuestionsActivity(clientFactory);
+			
+		} else if (place instanceof ErrorPlace) {
+			return new ErrorActivity(clientFactory, (ErrorPlace) place);
 		}
 		return new ErrorActivity(clientFactory, new ErrorPlace("la place "
 				+ place + " est introuvable"));

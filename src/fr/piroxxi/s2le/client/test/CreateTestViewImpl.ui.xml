@@ -1,10 +1,13 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
-	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:a="urn:import:fr.piroxxi.s2le.client.asside">
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:a="urn:import:fr.piroxxi.s2le.client.asside"
+	xmlns:p="urn:import:fr.piroxxi.s2le.client.ui.panel">
 
 	<g:VerticalPanel>
 		<g:Label>Bientot, ici, il y aura des trucs qui permettrons de choisir
-			:p pour l'instant non ! :)</g:Label>
+			:p pour l'instant non ! :)
+		</g:Label>
+		<p:CategoryChooser ui:field="categoryChooser" />
 		<g:Button ui:field="start">go</g:Button>
 	</g:VerticalPanel>
 </ui:UiBinder>

@@ -1,6 +1,6 @@
 package fr.piroxxi.s2le.storage.morphia;
 
-import fr.piroxxi.s2le.shared.model.BasicEntity;
+import fr.piroxxi.s2le.model.BasicEntity;
 import fr.piroxxi.s2le.storage.api.Query;
 
 public class Storage implements fr.piroxxi.s2le.storage.api.Storage {
