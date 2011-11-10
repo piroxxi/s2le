@@ -10,6 +10,7 @@ import com.google.inject.Inject;
 import fr.piroxxi.s2le.client.ClientFactory;
 import fr.piroxxi.s2le.client.events.LoggedInEvent;
 import fr.piroxxi.s2le.client.events.LoggedOutEvent;
+import fr.piroxxi.s2le.client.ui.SessionManager.SessionVerifier;
 
 public class LoginActivity extends AbstractActivity implements
 		LoginView.Delegate {
@@ -20,16 +21,27 @@ public class LoginActivity extends AbstractActivity implements
 	@Inject
 	public LoginActivity(ClientFactory factory) {
 		this.factory = factory;
-		/**
-		 * La, c'est le moment de vérifier qu'on est loggé !
-		 */
+		this.view = factory.getLoginView();
+		this.view.setDelegate(this);
+
+		this.factory.getSessionManager().isLoggedIn(new SessionVerifier() {
+
+			@Override
+			public void isLoggedIn(boolean loggedIn) {
+				if (loggedIn) {
+					view.setConnectedUser(LoginActivity.this.factory
+							.getSessionManager().getUserName());
+				} else {
+					view.setConnectedUser(null);
+				}
+			}
+		});
+
 	}
 
 	@Override
 	public void start(AcceptsOneWidget panel, EventBus eventBus) {
-		this.view = factory.getLoginView();
 		panel.setWidget(this.view);
-		this.view.setDelegate(this);
 	}
 
 	@Override

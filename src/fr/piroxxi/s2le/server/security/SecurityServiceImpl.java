@@ -22,7 +22,8 @@ public class SecurityServiceImpl extends RemoteServiceServlet implements
 	public SecurityServiceImpl() {
 		Injector injector = Guice.createInjector(new ServerModule());
 		this.storage = injector.getInstance(Storage.class);
-		this.sessionManager = injector.getInstance(SessionManager.class);
+		this.sessionManager = SessionManager.sessionManager; // TODO mettre de
+																// l'injection
 
 	}
 
@@ -37,7 +38,13 @@ public class SecurityServiceImpl extends RemoteServiceServlet implements
 			return null;
 		}
 
-		return sessionManager.createSession(name);
+		return sessionManager.createSession(user.getId());
+	}
+
+	@Override
+	public Boolean verifySession(String sessionId)
+			throws IllegalArgumentException {
+		return sessionManager.renewSessionIfValide(sessionId);
 	}
 
 }

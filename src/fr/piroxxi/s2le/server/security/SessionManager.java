@@ -9,6 +9,7 @@ import com.google.inject.Singleton;
 
 @Singleton
 public class SessionManager {
+	public static final SessionManager sessionManager = new SessionManager();
 	private static final Long TEN_MINUTES = new Long(1000 * 60 * 10);
 
 	private Map<String, String> sessions;
@@ -28,6 +29,8 @@ public class SessionManager {
 	 */
 	public String createSession(String name) {
 		String sessionId = UUID.randomUUID().toString();
+		System.out.println("[SessionManager] creation de la session "
+				+ sessionId + " pour " + name + "    -> " + this);
 
 		sessions.put(sessionId, name);
 		sessionsTimmer.put(sessionId, new Date(new Date().getTime()
@@ -44,11 +47,17 @@ public class SessionManager {
 	 * @return vrai si le numéro est valide, faux sinon.
 	 */
 	public boolean isValide(String sessionId) {
+		System.out.println("[SessionManager] verification de la session "
+				+ sessionId + "    -> " + this);
 		if (sessions.get(sessionId) == null) {
+			System.out.println("[SessionManager] session inexistante");
 			return false;
 		}
 
 		Date sessionTimout = sessionsTimmer.get(sessionId);
+		System.out.println("[SessionManager] la session expire en "
+				+ sessionTimout + " mais on est en " + new Date() + "    -> "
+				+ this);
 		return sessionTimout.after(new Date());
 	}
 

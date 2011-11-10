@@ -35,7 +35,8 @@ public class StoreServiceImpl extends RemoteServiceServlet implements
 	public StoreServiceImpl() {
 		Injector injector = Guice.createInjector(new ServerModule());
 		this.storage = injector.getInstance(Storage.class);
-		this.sessionManager = injector.getInstance(SessionManager.class);
+		this.sessionManager = SessionManager.sessionManager; // TODO mettre de
+																// l'injection
 		StorageRemplisseur.remplissageStorage(storage);
 	}
 
