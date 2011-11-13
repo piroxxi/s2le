@@ -7,6 +7,7 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
@@ -25,6 +26,9 @@ public class TranslationQuestionPanel extends Composite implements
 
 	@UiField
 	TextBox answers;
+
+	@UiField
+	HorizontalPanel answersPanel;
 
 	@UiField
 	Label error;
@@ -53,23 +57,31 @@ public class TranslationQuestionPanel extends Composite implements
 	public void showQuestion(Translation question) {
 		questionAsken = question;
 		this.answer = false;
-		this.question.setText(question.getEnglishWord());
+		this.question.setText(question.getEnglishWord()
+				.replaceAll("\\(.*?\\)", "").replace("  ", " "));
 	}
 
 	@UiHandler("ok")
 	public void ok(ClickEvent event) {
-		if (answers.getText().equalsIgnoreCase(questionAsken.getFrenchWord())) {
+		this.answer = answers
+				.getText()
+				.toLowerCase()
+				.matches(
+						questionAsken.getFrenchWord().toLowerCase()
+								.replace(")", "|)").replace(" ", " ?"));
+
+		if (answer) {
 			error.setText("bonne reponse!");
-			this.answer = true;
 		} else {
 			error.setText("Faux! La bonne reponse était \""
-					+ questionAsken.getFrenchWord() + "\" .");
-			this.answer = false;
+					+ questionAsken.getFrenchWord().toLowerCase()
+							.replaceAll("\\(.*?\\)", "") + "\" .");
 		}
 
 		next.setVisible(true);
 		error.setVisible(true);
-		answers.setVisible(false);
+		error.setStyleName((answer) ? "question_right" : "question_false");
+		answersPanel.setVisible(false);
 	}
 
 	@UiHandler("next")

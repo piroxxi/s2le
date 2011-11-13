@@ -1,90 +1,97 @@
+body {
+	color: black;
+	margin: 0px;
+	border: 0px;
+	padding: 0px;
+	background: #F7F7F6;
+}
 
-
-
-
-
-.middle{
+.middle {
 	position: relative;
-
 	margin-left: auto;
 	margin-right: auto;
-
 	width: 1024px;
-
 }
 
-.title{
+.title {
 	padding: 12px;
 	padding-top: 38px;
-
-
 	height: 50px; /* 50 + 12 + 38 = 100*/
-
-
-	background-color: blue;
+	background-color: #42392E;
 	font-size: 22pt;
-}
-.titleLetter{
-	color:yellow;
+	color: white;
 }
 
-#login{
+.titleLetter {
+	color: #AFC651;
+}
+
+#login {
 	position: absolute;
-
 	right: 12px;
 	top: 12px;
-
 	padding: 5px;
-
-	background-color: red;
+	background-color: rgba(255, 255, 255, 0.42);
+	border-radius: 10px;
 	font-size: 11pt;
 }
 
-.menu{
-	
-	background-color: yellow;
+.menu {
+	background-color: #918B85;
+	padding-left: 1px;
 }
 
-#menu{
-
+#menu {
 	height: 40px;
 	width: 700px;
-	background-color: green;
 }
 
-#content{
+#horizontalPanel {
+	position: relative;
+	background-color: #918B85;
+	background: -webkit-gradient(
+		linear,
+		left top, left bottom,
+		from(#918B85),
+		to(#42392E)
+	);
+	height: 523px;
+}
+
+#content {
 	height: 500px;
-	width: 774px;
-
-	background-color: grey;
+	width: 750px;
+	background-color: rgba(255, 255, 255, 0.93);
+	margin-left: 10px;
+	margin-bottom: 10px;
+	border-radius: 10px;
+	padding: 7px;
 }
 
-#asside{
+#asside {
 	position: absolute;
 	right: 0px;
 	top: 0px;
-
 	width: 250px;
 	height: 100%;
-
-	background-color: purple;
 }
 
-#horizontalPanel{
-	position: relative;
-}
-
-.leftPanel{
+.leftPanel {
+	padding: 10px;
+	border-radius: 10px;
 	margin: 10px;
-	
-	background-color: brown;
+	background-color: #D2E084;
+	border: solid 1px black;
 }
 
+.question_right {
+	color: #8aa913;
+	font-weight: bold;
+	/*text-shadow: 0px 0px 21px #DDD;*/
+}
 
-
-
-
-
-
-
-
+.question_false {
+	color: red;
+	font-weight: bold;
+	/*text-shadow: 0px 0px 21px #DDD;*/
+}

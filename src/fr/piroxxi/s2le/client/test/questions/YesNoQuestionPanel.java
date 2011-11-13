@@ -60,18 +60,24 @@ public class YesNoQuestionPanel extends Composite implements
 	@UiHandler("no")
 	public void no(ClickEvent event) {
 		answer = !questionAsken.isAnswer();
-
-		next.setVisible(true);
-		error.setVisible(true);
-		answers.setVisible(false);
+		res();
 	}
 
 	@UiHandler("yes")
 	public void yes(ClickEvent event) {
 		answer = questionAsken.isAnswer();
+		res();
+	}
 
+	private void res() {
 		next.setVisible(true);
 		error.setVisible(true);
+		error.setStyleName((answer)?"question_right":"question_false");
+		if (!answer) {
+			error.setText("Mauvaise reponse! La bonne réponse était "+((questionAsken.isAnswer())?"oui":"non")+".");
+		} else {
+			error.setText("Bonne reponse!");
+		}
 		answers.setVisible(false);
 	}
 

@@ -25,7 +25,7 @@
 		</g:HTMLPanel>
 		<g:HTMLPanel ui:field='deconnectedPanel'>
 			<g:HorizontalPanel>
-				<g:Label>Bienvenu&nbsp;</g:Label>
+				<g:Label>Bienvenue&nbsp;</g:Label>
 				<g:Label ui:field='userName' />
 				<g:Label>&nbsp;.&nbsp;</g:Label>
 				<g:Button ui:field='logout'>logout</g:Button>

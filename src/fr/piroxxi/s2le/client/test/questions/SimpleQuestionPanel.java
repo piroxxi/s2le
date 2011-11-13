@@ -69,6 +69,7 @@ public class SimpleQuestionPanel extends Composite implements
 
 		next.setVisible(true);
 		error.setVisible(true);
+		error.setStyleName((answer)?"question_right":"question_false");
 		answers.setVisible(false);
 	}
 

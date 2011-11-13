@@ -2,16 +2,23 @@
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
 	xmlns:g="urn:import:com.google.gwt.user.client.ui">
 
+	<ui:style>
+		.question {
+			font-weight: bold;
+		}
+	</ui:style>
+
 	<g:HTMLPanel>
-		Comment se traduit le mot "
-		<g:Label ui:field="question" />
-		"
-		<br />
 		<g:HorizontalPanel>
+			<g:Label>Comment se traduit le mot "</g:Label>
+			<g:Label ui:field="question" styleName="{style.question}" />
+			<g:Label>"</g:Label>
+		</g:HorizontalPanel>
+		<br />
+		<g:HorizontalPanel ui:field="answersPanel">
 			<g:TextBox ui:field="answers" />
 			<g:Button ui:field="ok">ok</g:Button>
 		</g:HorizontalPanel>
-		<br />
 		<g:Label ui:field="error" />
 		<br />
 		<g:Button ui:field="next">next</g:Button>

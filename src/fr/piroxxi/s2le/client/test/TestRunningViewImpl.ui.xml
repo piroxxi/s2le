@@ -4,19 +4,33 @@
 
 	<ui:style>
 		.questionPanel {
-			border: 1px solid blue;
+			border: 1px solid #AFC651;
 			padding: 20px;
-	
-			-moz-border-radius: 1em 4em 1em 4em;
-			border-radius: 1em 4em 1em 4em;
+			-moz-border-radius: 15px;
+			border-radius: 15px;
+			background-color: rgba(0, 0, 0, 0.03); <!--
+			background: -webkit-gradient(linear, left top, left bottom, from(#918B85),
+				to(#42392E) );
+			-->
 		}
 	</ui:style>
 
-	<g:VerticalPanel>
-		<g:Label>Nous sommes entrain de faire le test </g:Label>
-		<g:Label ui:field="testName" />
-		<g:SimplePanel styleName="{style.questionPanel}" ui:field="question" />
-		<g:Label>Nous en sommes à la question </g:Label>
-		<g:Label ui:field="testAvancement" />
-	</g:VerticalPanel>
+	<g:HTMLPanel>
+		<g:HorizontalPanel>
+			<g:Label>Nous
+				sommes entrain de faire le test&nbsp;
+			</g:Label>
+			<g:Label ui:field="testName" />
+		</g:HorizontalPanel>
+		<br />
+		<g:SimplePanel styleName="{style.questionPanel}"
+			ui:field="question" />
+		<br />
+		<g:HorizontalPanel>
+			<g:Label>Nous
+				en sommes à la question&nbsp;
+			</g:Label>
+			<g:Label ui:field="testAvancement" />
+		</g:HorizontalPanel>
+	</g:HTMLPanel>
 </ui:UiBinder>
