@@ -9,8 +9,10 @@ import fr.piroxxi.s2le.client.places.CreateTestPlace;
 import fr.piroxxi.s2le.client.places.ErrorPlace;
 import fr.piroxxi.s2le.client.places.HelloPlace;
 import fr.piroxxi.s2le.client.places.ListeQuestionsPlace;
+import fr.piroxxi.s2le.client.places.ResultTestPlace;
 import fr.piroxxi.s2le.client.places.TestPlace;
 import fr.piroxxi.s2le.client.test.CreateTestActivity;
+import fr.piroxxi.s2le.client.test.ResultTestActivity;
 import fr.piroxxi.s2le.client.test.TestRunningActivity;
 import fr.piroxxi.s2le.client.test.liste.ListeQuestionsActivity;
 import fr.piroxxi.s2le.client.ui.error.ErrorActivity;
@@ -25,19 +27,23 @@ public class ApplicationActivityMapper implements ActivityMapper {
 
 	@Override
 	public Activity getActivity(Place place) {
-		
+
 		if (place instanceof HelloPlace) {
 			return new HelloActivity(clientFactory);
-			
+
 		} else if (place instanceof CreateTestPlace) {
 			return new CreateTestActivity(clientFactory);
-			
+
 		} else if (place instanceof TestPlace) {
 			return new TestRunningActivity(clientFactory, (TestPlace) place);
-			
+
 		} else if (place instanceof ListeQuestionsPlace) {
 			return new ListeQuestionsActivity(clientFactory);
-			
+
+		} else if (place instanceof ResultTestPlace) {
+			return new ResultTestActivity(clientFactory,
+					(ResultTestPlace) place);
+
 		} else if (place instanceof ErrorPlace) {
 			return new ErrorActivity(clientFactory, (ErrorPlace) place);
 		}

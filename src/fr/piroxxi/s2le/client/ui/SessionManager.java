@@ -1,14 +1,21 @@
 package fr.piroxxi.s2le.client.ui;
 
+import java.util.Date;
+
+import com.google.gwt.user.client.Cookies;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 import fr.piroxxi.s2le.client.ClientFactory;
+import fr.piroxxi.s2le.client.events.LoggedInEvent;
+import fr.piroxxi.s2le.client.events.LoggedOutEvent;
 
 public class SessionManager {
 	public interface SessionVerifier {
 		public void isLoggedIn(boolean loggedIn);
 	}
+
+	private static final Long TEN_MINUTES = new Long(1000 * 60 * 10);
 
 	private ClientFactory clientFactory;
 	private String sessionId = null;
@@ -30,14 +37,22 @@ public class SessionManager {
 
 	public void setLoggedIn(String userName, String sessionId) {
 		this.userName = userName;
+		Cookies.setCookie("userName", userName, new Date(new Date().getTime()
+				+ TEN_MINUTES));
 		this.sessionId = sessionId;
+		Cookies.setCookie("sessionId", sessionId, new Date(new Date().getTime()
+				+ TEN_MINUTES));
 		this.loggedIn = true;
+		this.clientFactory.getEventBus().fireEvent(new LoggedInEvent());
 	}
 
 	public void setLoggedOut() {
 		this.userName = null;
+		Cookies.removeCookie("userName");
 		this.sessionId = null;
+		Cookies.removeCookie("sessionId");
 		this.loggedIn = false;
+		this.clientFactory.getEventBus().fireEvent(new LoggedOutEvent());
 	}
 
 	/**
@@ -51,27 +66,30 @@ public class SessionManager {
 	 */
 	public void isLoggedIn(final SessionVerifier sessionVerifier) {
 		if (isApplicationStarting) {
-			final String sessionId = null; // TODO lire un cookie
+			final String sessionId = Cookies.getCookie("sessionId");
+			final String userName = Cookies.getCookie("userName");
 
-			if (sessionId != null) {
+			if (sessionId == null) {
 				sessionVerifier.isLoggedIn(false);
+				setLoggedOut();
 			} else {
-
 				clientFactory.getSecurityService().verifySession(sessionId,
 						new AsyncCallback<Boolean>() {
 
 							@Override
 							public void onSuccess(Boolean result) {
+								setLoggedIn(userName, sessionId);
 								sessionVerifier.isLoggedIn(result);
 							}
 
 							@Override
 							public void onFailure(Throwable caught) {
-								Window.alert("(SessionManager) erreure lors de la verificatino de la session "
+								Window.alert("(SessionManager) erreure lors de la verification de la session "
 										+ sessionId + " - " + caught);
 							}
 						});
 			}
+			isApplicationStarting = false;
 		} else {
 			sessionVerifier.isLoggedIn(loggedIn);
 		}

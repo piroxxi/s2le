@@ -14,21 +14,21 @@ public class ResultTestPlace extends Place {
 
 		@Override
 		public String getToken(ResultTestPlace place) {
-			return place.getTestId();
+			return place.getTestResults();
 		}
 
 	}
 
-	private String testId;
+	private String testResults;
 
 	/**
-	 * @return the testId
+	 * @return the testResults
 	 */
-	public String getTestId() {
-		return testId;
+	public String getTestResults() {
+		return testResults;
 	}
 
-	public ResultTestPlace(String testId) {
-		this.testId = testId;
+	public ResultTestPlace(String testResults) {
+		this.testResults = testResults;
 	}
 }

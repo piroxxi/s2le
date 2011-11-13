@@ -42,12 +42,12 @@ public class StorageRemplisseur {
 		 */
 		Translation boardOfDirectors = new Translation("piroxxi",
 				mondeEntreprise, Difficulty.hard, "(a) Board of Directors",
-				"(Un) conseil (d')administration");
+				"(Un|le) conseil (d')administration");
 		storage.store(Question.class, boardOfDirectors);
 
 		Translation technicalAdvisor = new Translation("piroxxi",
-				mondeEntreprise, Difficulty.medium, "(a) Technical advisor",
-				"(Un) conseiller technique");
+				mondeEntreprise, Difficulty.medium, "(a|The) Technical advisor",
+				"(Un|Le) conseiller technique");
 		storage.store(Question.class, technicalAdvisor);
 
 		YesNoQuestion orangeIsAColor = new YesNoQuestion("piroxxi",

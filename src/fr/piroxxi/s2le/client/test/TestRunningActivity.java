@@ -8,6 +8,7 @@ import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.google.gwt.user.client.ui.SimplePanel;
 
 import fr.piroxxi.s2le.client.ClientFactory;
+import fr.piroxxi.s2le.client.events.QuestionAnsweredEvent;
 import fr.piroxxi.s2le.client.places.ResultTestPlace;
 import fr.piroxxi.s2le.client.places.TestPlace;
 import fr.piroxxi.s2le.client.test.questions.MultiChoicesQuestionPanel;
@@ -36,8 +37,8 @@ public class TestRunningActivity extends AbstractActivity implements
 		this.view.setDelegate(this);
 		panel = this.view.getMainPanel();
 
-		this.clientFactory.getStoreService().getTest(
-				testPlace.getTestId(), new AsyncCallback<Test>() {
+		this.clientFactory.getStoreService().getTest(testPlace.getTestId(),
+				new AsyncCallback<Test>() {
 
 					@Override
 					public void onFailure(Throwable caught) {
@@ -90,7 +91,7 @@ public class TestRunningActivity extends AbstractActivity implements
 	}
 
 	@Override
-	public void hasAnswered(boolean goodAnswer) {
+	public void hasAnswered(final boolean goodAnswer) {
 		// On effectue la mise à jour de l'objet test coté client.
 		final boolean moreQuestion = test.hasAnswered(goodAnswer);
 
@@ -106,13 +107,15 @@ public class TestRunningActivity extends AbstractActivity implements
 
 					@Override
 					public void onSuccess(Boolean result) {
-
+						clientFactory.getEventBus().fireEvent(
+								new QuestionAnsweredEvent(goodAnswer));
 					}
 				});
 
 		if (!moreQuestion) {
 			clientFactory.getPlaceController().goTo(
-					new ResultTestPlace(test.getId()));
+					new ResultTestPlace(test.getGoodAnswerScore() + " / "
+							+ test.getSize()));
 		} else {
 			printQuestion();
 		}

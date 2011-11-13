@@ -1,0 +1,11 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:a="urn:import:fr.piroxxi.s2le.client.asside">
+
+	<g:VerticalPanel>
+		<g:Label>Felicitation, vous venez de finir ce test, votre résultat est
+			:</g:Label>
+		<g:Label ui:field="result" />
+		<g:Button ui:field="nextTest">start a new test</g:Button>
+	</g:VerticalPanel>
+</ui:UiBinder>

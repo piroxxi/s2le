@@ -15,6 +15,8 @@ import fr.piroxxi.s2le.client.menu.MenuView;
 import fr.piroxxi.s2le.client.menu.MenuViewImpl;
 import fr.piroxxi.s2le.client.test.CreateTestView;
 import fr.piroxxi.s2le.client.test.CreateTestViewImpl;
+import fr.piroxxi.s2le.client.test.ResultTestView;
+import fr.piroxxi.s2le.client.test.ResultTestViewImpl;
 import fr.piroxxi.s2le.client.test.TestRunningView;
 import fr.piroxxi.s2le.client.test.TestRunningViewImpl;
 import fr.piroxxi.s2le.client.test.liste.ListeQuestionsView;
@@ -102,5 +104,10 @@ public class ClientFactoryImpl implements ClientFactory {
 	@Override
 	public SessionManager getSessionManager() {
 		return sessionManager;
+	}
+
+	@Override
+	public ResultTestView getResultTestView() {
+		return new ResultTestViewImpl();
 	}
 }

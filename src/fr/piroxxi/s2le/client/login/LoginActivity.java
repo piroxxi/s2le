@@ -8,8 +8,6 @@ import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.google.inject.Inject;
 
 import fr.piroxxi.s2le.client.ClientFactory;
-import fr.piroxxi.s2le.client.events.LoggedInEvent;
-import fr.piroxxi.s2le.client.events.LoggedOutEvent;
 import fr.piroxxi.s2le.client.ui.SessionManager.SessionVerifier;
 
 public class LoginActivity extends AbstractActivity implements
@@ -55,8 +53,6 @@ public class LoginActivity extends AbstractActivity implements
 							factory.getSessionManager().setLoggedIn(userName,
 									sessionId);
 							view.setConnectedUser(userName);
-							factory.getEventBus()
-									.fireEvent(new LoggedInEvent());
 						} else {
 							Window.alert("Wrong username or password!");
 						}
@@ -73,7 +69,6 @@ public class LoginActivity extends AbstractActivity implements
 	public void logout() {
 		factory.getSessionManager().setLoggedOut();
 		view.setConnectedUser(null);
-		factory.getEventBus().fireEvent(new LoggedOutEvent());
 	}
 
 }

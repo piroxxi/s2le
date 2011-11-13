@@ -10,10 +10,12 @@ import fr.piroxxi.s2le.client.ClientFactory;
 import fr.piroxxi.s2le.client.events.LoggedInEvent;
 import fr.piroxxi.s2le.client.events.LoggedOutEvent;
 import fr.piroxxi.s2le.client.events.LoggingEventHandler;
+import fr.piroxxi.s2le.client.events.QuestionAnsweredEvent;
+import fr.piroxxi.s2le.client.events.QuestionAnsweredEventHandler;
 import fr.piroxxi.s2le.model.User;
 
 public class AssideActivity extends AbstractActivity implements
-		AssideView.Delegate, LoggingEventHandler {
+		AssideView.Delegate, LoggingEventHandler, QuestionAnsweredEventHandler {
 
 	private AssideView view;
 	private final ClientFactory factory;
@@ -25,6 +27,7 @@ public class AssideActivity extends AbstractActivity implements
 
 		this.factory.getEventBus().addHandler(LoggedInEvent.TYPE, this);
 		this.factory.getEventBus().addHandler(LoggedOutEvent.TYPE, this);
+		this.factory.getEventBus().addHandler(QuestionAnsweredEvent.TYPE, this);
 	}
 
 	@Override
@@ -44,7 +47,10 @@ public class AssideActivity extends AbstractActivity implements
 
 	@Override
 	public void loggedIn(LoggedInEvent loggedInEvent) {
+		refreshUser();
+	}
 
+	private void refreshUser() {
 		this.factory.getStoreService().getUser(
 				this.factory.getSessionManager().getSessionId(),
 				this.factory.getSessionManager().getUserName(),
@@ -66,5 +72,10 @@ public class AssideActivity extends AbstractActivity implements
 	@Override
 	public void loggedOut(LoggedOutEvent loggedOutEvent) {
 		view.hideUserStats();
+	}
+
+	@Override
+	public void questionAnswered(QuestionAnsweredEvent questionAnsweredEvent) {
+		refreshUser();
 	}
 }
