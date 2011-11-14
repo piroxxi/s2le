@@ -49,12 +49,8 @@ body {
 #horizontalPanel {
 	position: relative;
 	background-color: #918B85;
-	background: -webkit-gradient(
-		linear,
-		left top, left bottom,
-		from(#918B85),
-		to(#42392E)
-	);
+	background: -webkit-gradient(linear, left top, left bottom, from(#918B85),
+		to(#42392E) );
 	height: 523px;
 }
 
@@ -94,4 +90,33 @@ body {
 	color: red;
 	font-weight: bold;
 	/*text-shadow: 0px 0px 21px #DDD;*/
+}
+
+.gwt-Button {
+	margin: 0;
+	padding: 2px 8px;
+	text-decoration: none;
+	cursor: pointer;
+	cursor: hand;
+	font-size: small;
+	background: #DDD;
+	border: 1px solid #BBB;
+	border-bottom: 1px solid #666;
+	border-right: 1px solid #666;
+	border-radius: 14px;
+	-moz-border-radius: 3px;
+}
+
+.typeQuestion {
+	color: blue;
+	padding-right: 15px;
+}
+
+.translation_title {
+	color: grey;
+	padding-right: 15px;
+}
+
+.translation_decalage {
+	padding-left: 80px;
 }

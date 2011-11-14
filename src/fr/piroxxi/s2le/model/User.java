@@ -66,8 +66,6 @@ public class User extends BasicEntity {
 		this.email = email;
 	}
 
-	
-	
 	public void startATest() {
 		this.nbTestsCommencees++;
 	}
@@ -82,9 +80,6 @@ public class User extends BasicEntity {
 			nbQuestionsJustes++;
 		}
 	}
-	
-	
-	
 
 	/**
 	 * @return the nbTestsCommencees

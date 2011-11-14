@@ -1,8 +1,13 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
-	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:c="urn:import:com.google.gwt.user.cellview.client">
 
 	<g:HTMLPanel>
-		Bon bah faut afficher la liste des tests quoi. :)
+		Voici la liste des questions que vous avez crée :
+		<br />
+		<c:CellList ui:field="questions" />
+
+		<br />
+		<g:Button ui:field="createQuestion">Créer une nouvelle question.</g:Button>
 	</g:HTMLPanel>
 </ui:UiBinder>

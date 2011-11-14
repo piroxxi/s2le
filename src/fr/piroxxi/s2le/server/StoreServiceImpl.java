@@ -10,6 +10,7 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 
+import fr.piroxxi.s2le.model.Advise;
 import fr.piroxxi.s2le.model.Category;
 import fr.piroxxi.s2le.model.Difficulty;
 import fr.piroxxi.s2le.model.Test;
@@ -167,5 +168,36 @@ public class StoreServiceImpl extends RemoteServiceServlet implements
 
 		// TODO Test si c'est bien un admin!
 		return null;
+	}
+
+	@Override
+	public Advise getRandomAdvise(String session) {
+		List<Advise> advices = storage.createQuery(Advise.class)
+				.retrieveAsList();
+		return advices.get((int) (Math.random() * advices.size()));
+	}
+
+	@Override
+	public Question[] listeQuestions(String session) throws LogginException {
+		if (!sessionManager.isValide(session)) {
+			throw new LogginException("vous n'êtes pas connecté");
+		}
+
+		final String userName = sessionManager.getUserId(session);
+		Query<Question> query = storage.createQuery(Question.class);
+		query.addFilter(new Filter<Question>() {
+			@Override
+			public boolean filter(Question entitie) {
+				return userName.equals(entitie.getCreatorId());
+			}
+		});
+		List<Question> liste = query.retrieveAsList();
+
+		Question[] questions = new Question[liste.size()];
+		for (int i = 0; i < liste.size(); i++) {
+			questions[i] = liste.get(i);
+		}
+
+		return questions;
 	}
 }

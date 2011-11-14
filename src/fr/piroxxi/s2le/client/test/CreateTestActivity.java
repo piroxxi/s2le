@@ -23,7 +23,7 @@ public class CreateTestActivity extends AbstractActivity implements
 		this.factory = factory;
 		this.view = factory.getCreateTestView();
 		view.setDelegate(this);
-
+		
 		this.factory.getStoreService().getCategories(
 				new AsyncCallback<Category[]>() {
 

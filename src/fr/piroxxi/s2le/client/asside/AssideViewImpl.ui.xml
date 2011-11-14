@@ -1,6 +1,6 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
-	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:a="urn:import:fr.piroxxi.s2le.client.asside">
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:a="urn:import:fr.piroxxi.s2le.client.asside" xmlns:advise="urn:import:fr.piroxxi.s2le.client.asside.advise">
 	<ui:style>
 		.sponsor {
 			border: 0em;
@@ -20,5 +20,8 @@
 				<a:UserStatsPanel ui:field="userStats" />
 			</g:HTMLPanel>
 		</div>
+		<g:SimplePanel styleName="leftPanel" ui:field="advisorPanel">
+			
+		</g:SimplePanel> 
 	</g:HTMLPanel>
 </ui:UiBinder>

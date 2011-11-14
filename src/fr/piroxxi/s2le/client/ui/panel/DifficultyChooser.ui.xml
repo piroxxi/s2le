@@ -3,13 +3,14 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:a="urn:import:fr.piroxxi.s2le.client.asside">
 
 	<ui:style>
-		.flow {
-			
+		.name {
+			color: orange;
 		}
 	</ui:style>
 
-	<g:HorizontalPanel>
-		<g:ListBox ui:field="categoriesLB" />
-		<g:FlowPanel ui:field="categoriesHP" styleName="{style.flow}" />
-	</g:HorizontalPanel>
+	<g:FlowPanel>
+		<g:Label styleName="{style.name}">Prochainement, un selectioneur de
+			difficultée.</g:Label>
+		<g:Label>(fr.piroxxi.s2le.client.ui.panel.DifficultyChooser)</g:Label>
+	</g:FlowPanel>
 </ui:UiBinder>

@@ -1,5 +1,6 @@
 package fr.piroxxi.s2le.client.asside;
 
+import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.google.inject.ImplementedBy;
 
 import fr.piroxxi.s2le.client.ui.View;
@@ -12,6 +13,8 @@ public interface AssideView extends View<AssideView.Delegate> {
 	void hideUserStats();
 
 	void setDelegate(Delegate delegate);
+	
+	AcceptsOneWidget getAdvisorPanel();
 
 	public interface Delegate extends UserStatsPanel.Delegate, View.Delegate {
 		void createAccount();

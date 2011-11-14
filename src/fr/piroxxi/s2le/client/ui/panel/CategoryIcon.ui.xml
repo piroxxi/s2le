@@ -1,0 +1,43 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:a="urn:import:fr.piroxxi.s2le.client.asside">
+
+	<ui:style>
+		.icon {
+			vertical-align: middle;
+			border: 1px solid rgba(0, 0, 0, 0.3);
+			padding: 0px 6px 0px 0px;
+			margin: 1px;
+			border-radius: 6px;
+		}
+		
+		.icon:hover{
+			border: 1px solid rgba(255, 0, 0, 0.2);
+		}
+		.icon:hover .x{
+			color: red;
+		}
+		
+		.inline {
+			display: inline;
+		}
+		
+		.x {
+			color: rgba(0, 0, 0, 0.3);
+			height: 17px;
+			width: 14px;
+			padding: 0;
+			border: none;
+			background: none;
+		}
+		
+		.name {
+			color: black;
+		}
+	</ui:style>
+
+	<g:FlowPanel styleName="{style.icon} {style.inline}">
+		<g:Button ui:field="x" styleName="{style.x} {style.inline}">x</g:Button>
+		<g:Label ui:field="name" styleName="{style.name} {style.inline}" />
+	</g:FlowPanel>
+</ui:UiBinder>

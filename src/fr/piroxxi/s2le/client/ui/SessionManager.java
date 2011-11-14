@@ -31,6 +31,12 @@ public class SessionManager {
 		return userName;
 	}
 
+	/**
+	 * ATTENTION! Cette fonction doit être appellée apres la fonction
+	 * isLoggerId().
+	 * 
+	 * @return
+	 */
 	public String getSessionId() {
 		return sessionId;
 	}

@@ -2,14 +2,7 @@
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
 	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:a="urn:import:fr.piroxxi.s2le.client.asside">
 
-	<ui:style>
-		.flow {
-			
-		}
-	</ui:style>
-
-	<g:HorizontalPanel>
-		<g:ListBox ui:field="categoriesLB" />
-		<g:FlowPanel ui:field="categoriesHP" styleName="{style.flow}" />
-	</g:HorizontalPanel>
+	<g:VerticalPanel>
+		Très prochainement, ici, vous pourrez créer une nouvelle question :)
+	</g:VerticalPanel>
 </ui:UiBinder>

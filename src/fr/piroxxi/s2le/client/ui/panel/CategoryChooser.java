@@ -5,21 +5,18 @@ import java.util.List;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ChangeEvent;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.Widget;
 
+import fr.piroxxi.s2le.client.ui.panel.CategoryIcon.Delegate;
 import fr.piroxxi.s2le.model.Category;
 
-public class CategoryChooser extends Composite {
+public class CategoryChooser extends Composite implements Delegate {
 	interface MyUiBinder extends UiBinder<Widget, CategoryChooser> {
 	}
 
@@ -31,7 +28,7 @@ public class CategoryChooser extends Composite {
 	ListBox categoriesLB;
 
 	@UiField
-	HorizontalPanel categoriesHP;
+	FlowPanel categoriesHP;
 
 	public CategoryChooser() {
 		initWidget(uiBinder.createAndBindUi(this));
@@ -69,37 +66,19 @@ public class CategoryChooser extends Composite {
 	List<Category> selectedCategories = new ArrayList<Category>();
 
 	private void addToSelection(Category cat) {
-		selectedCategories.add(cat);
-		categoriesHP.add(new CategoryS(cat));
+		if (!selectedCategories.contains(cat)) {
+			selectedCategories.add(cat);
+			categoriesHP.add(new CategoryIcon(cat, this));
+		}
 	}
 
-	private void removeFromSelection(CategoryS cat) {
+	@Override
+	public void removeFromSelection(CategoryIcon cat) {
 		selectedCategories.remove(cat.getCategory());
 		categoriesHP.remove(cat);
 	}
 
 	public List<Category> getSelectedCategories() {
 		return selectedCategories;
-	}
-
-	class CategoryS extends HorizontalPanel implements ClickHandler {
-		private final Category cat;
-
-		public CategoryS(Category cat) {
-			this.cat = cat;
-			Button b = new Button("x");
-			b.addClickHandler(this);
-			this.add(b);
-			this.add(new Label(cat.getCategoryName()));
-		}
-
-		@Override
-		public void onClick(ClickEvent event) {
-			removeFromSelection(this);
-		}
-
-		public Category getCategory() {
-			return cat;
-		}
 	}
 }

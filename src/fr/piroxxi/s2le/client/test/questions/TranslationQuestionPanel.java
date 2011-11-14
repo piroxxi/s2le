@@ -1,13 +1,17 @@
 package fr.piroxxi.s2le.client.test.questions;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.KeyCodes;
+import com.google.gwt.event.dom.client.KeyPressEvent;
+import com.google.gwt.event.dom.client.KeyPressHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
@@ -25,10 +29,10 @@ public class TranslationQuestionPanel extends Composite implements
 	Label question;
 
 	@UiField
-	TextBox answers;
+	TextBox answerBox;
 
 	@UiField
-	HorizontalPanel answersPanel;
+	Button ok;
 
 	@UiField
 	Label error;
@@ -46,6 +50,15 @@ public class TranslationQuestionPanel extends Composite implements
 		initWidget(uiBinder.createAndBindUi(this));
 		next.setVisible(false);
 		error.setVisible(false);
+
+		answerBox.addKeyPressHandler(new KeyPressHandler() {
+
+			@Override
+			public void onKeyPress(KeyPressEvent event) {
+				// TODO Auto-generated method stub
+
+			}
+		});
 	}
 
 	@Override
@@ -59,11 +72,32 @@ public class TranslationQuestionPanel extends Composite implements
 		this.answer = false;
 		this.question.setText(question.getEnglishWord()
 				.replaceAll("\\(.*?\\)", "").replace("  ", " "));
+		Scheduler.get().scheduleDeferred(new ScheduledCommand() {
+			public void execute() {
+				answerBox.setFocus(true);
+			}
+		});
+
+	}
+
+	@UiHandler("answerBox")
+	public void onEnter(KeyPressEvent event) {
+		if (KeyCodes.KEY_ENTER == event.getNativeEvent().getKeyCode()) {
+			if (next.isVisible()) {
+				next(null);
+			} else {
+				ok();
+			}
+		}
 	}
 
 	@UiHandler("ok")
 	public void ok(ClickEvent event) {
-		this.answer = answers
+		ok();
+	}
+
+	private void ok() {
+		this.answer = answerBox
 				.getText()
 				.toLowerCase()
 				.matches(
@@ -81,11 +115,12 @@ public class TranslationQuestionPanel extends Composite implements
 		next.setVisible(true);
 		error.setVisible(true);
 		error.setStyleName((answer) ? "question_right" : "question_false");
-		answersPanel.setVisible(false);
+		answerBox.setEnabled(false);
+		ok.setVisible(false);
 	}
 
 	@UiHandler("next")
-	public void start(ClickEvent event) {
+	public void next(ClickEvent event) {
 		if (delegate != null) {
 			delegate.hasAnswered(answer);
 		}

@@ -4,12 +4,14 @@ import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.place.shared.PlaceController;
 
 import fr.piroxxi.s2le.client.asside.AssideView;
+import fr.piroxxi.s2le.client.asside.advise.AdvisorView;
 import fr.piroxxi.s2le.client.hello.HelloView;
 import fr.piroxxi.s2le.client.login.LoginView;
 import fr.piroxxi.s2le.client.menu.MenuView;
 import fr.piroxxi.s2le.client.test.CreateTestView;
 import fr.piroxxi.s2le.client.test.ResultTestView;
 import fr.piroxxi.s2le.client.test.TestRunningView;
+import fr.piroxxi.s2le.client.test.creation.CreateQuestionView;
 import fr.piroxxi.s2le.client.test.liste.ListeQuestionsView;
 import fr.piroxxi.s2le.client.ui.SessionManager;
 import fr.piroxxi.s2le.shared.StoreServiceAsync;
@@ -43,5 +45,9 @@ public interface ClientFactory {
 	SessionManager getSessionManager();
 
 	ResultTestView getResultTestView();
+
+	AdvisorView getAdvisorView();
+
+	CreateQuestionView getCreateQuestionView();
 
 }
