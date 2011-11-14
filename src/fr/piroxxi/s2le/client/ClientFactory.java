@@ -4,6 +4,7 @@ import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.place.shared.PlaceController;
 
 import fr.piroxxi.s2le.client.asside.AssideView;
+import fr.piroxxi.s2le.client.asside.advise.AdvisorView;
 import fr.piroxxi.s2le.client.hello.HelloView;
 import fr.piroxxi.s2le.client.login.LoginView;
 import fr.piroxxi.s2le.client.menu.MenuView;
@@ -43,5 +44,7 @@ public interface ClientFactory {
 	SessionManager getSessionManager();
 
 	ResultTestView getResultTestView();
+
+	AdvisorView getAdvisorView();
 
 }

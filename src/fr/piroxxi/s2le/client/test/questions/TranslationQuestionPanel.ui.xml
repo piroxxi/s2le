@@ -14,13 +14,10 @@
 			<g:Label ui:field="question" styleName="{style.question}" />
 			<g:Label>"</g:Label>
 		</g:HorizontalPanel>
-		<br />
-		<g:HorizontalPanel ui:field="answersPanel">
-			<g:TextBox ui:field="answers" />
-			<g:Button ui:field="ok">ok</g:Button>
-		</g:HorizontalPanel>
+
+		<g:TextBox ui:field="answerBox" />
+		<g:Button ui:field="ok">ok</g:Button>
 		<g:Label ui:field="error" />
-		<br />
 		<g:Button ui:field="next">next</g:Button>
 	</g:HTMLPanel>
 </ui:UiBinder>

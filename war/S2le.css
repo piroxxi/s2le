@@ -95,3 +95,21 @@ body {
 	font-weight: bold;
 	/*text-shadow: 0px 0px 21px #DDD;*/
 }
+
+
+.gwt-Button {
+	margin: 0;
+	padding: 2px 8px;
+	text-decoration: none;
+	cursor: pointer;
+	cursor: hand;
+	font-size: small;
+	background: #DDD;
+	
+	border: 1px solid #BBB;
+	border-bottom: 1px solid #666;
+	border-right: 1px solid #666;
+	
+	border-radius: 14px;
+	-moz-border-radius: 3px;
+}

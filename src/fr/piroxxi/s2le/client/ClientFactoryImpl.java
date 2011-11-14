@@ -7,6 +7,8 @@ import com.google.gwt.place.shared.PlaceController;
 
 import fr.piroxxi.s2le.client.asside.AssideView;
 import fr.piroxxi.s2le.client.asside.AssideViewImpl;
+import fr.piroxxi.s2le.client.asside.advise.AdvisorView;
+import fr.piroxxi.s2le.client.asside.advise.AdvisorViewImpl;
 import fr.piroxxi.s2le.client.hello.HelloView;
 import fr.piroxxi.s2le.client.hello.HelloViewImpl;
 import fr.piroxxi.s2le.client.login.LoginView;
@@ -45,6 +47,7 @@ public class ClientFactoryImpl implements ClientFactory {
 	private final ListeQuestionsView listeTestView = new ListeQuestionsViewImpl();
 	private final HelloView helloView = new HelloViewImpl();
 	private final MenuView menuView = new MenuViewImpl();
+	private final AdvisorView advisorView = new AdvisorViewImpl();
 
 	@Override
 	public EventBus getEventBus() {
@@ -109,5 +112,10 @@ public class ClientFactoryImpl implements ClientFactory {
 	@Override
 	public ResultTestView getResultTestView() {
 		return new ResultTestViewImpl();
+	}
+
+	@Override
+	public AdvisorView getAdvisorView() {
+		return advisorView;
 	}
 }

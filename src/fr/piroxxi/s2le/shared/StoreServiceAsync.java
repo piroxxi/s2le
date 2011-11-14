@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
+import fr.piroxxi.s2le.model.Advise;
 import fr.piroxxi.s2le.model.Category;
 import fr.piroxxi.s2le.model.Difficulty;
 import fr.piroxxi.s2le.model.Test;
@@ -23,5 +24,8 @@ public interface StoreServiceAsync {
 			AsyncCallback<String> callback);
 
 	void getUser(String session, String userId, AsyncCallback<User> callback);
+
+	void getRandomAdvise(String session, AsyncCallback<Advise> callback);
+
 
 }

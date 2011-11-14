@@ -10,6 +10,7 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 
+import fr.piroxxi.s2le.model.Advise;
 import fr.piroxxi.s2le.model.Category;
 import fr.piroxxi.s2le.model.Difficulty;
 import fr.piroxxi.s2le.model.Test;
@@ -167,5 +168,12 @@ public class StoreServiceImpl extends RemoteServiceServlet implements
 
 		// TODO Test si c'est bien un admin!
 		return null;
+	}
+
+	@Override
+	public Advise getRandomAdvise(String session) {
+		List<Advise> advices = storage.createQuery(Advise.class)
+				.retrieveAsList();
+		return advices.get((int) (Math.random() * advices.size()));
 	}
 }
