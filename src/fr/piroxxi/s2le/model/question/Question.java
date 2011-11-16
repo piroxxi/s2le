@@ -65,4 +65,18 @@ public abstract class Question extends BasicEntity {
 	}
 
 	public abstract String serialize();
+
+	public String getType() {
+		if (this instanceof MultiChoicesQuestion)
+			return "Question à choix multiples";
+		if (this instanceof YesNoQuestion)
+			return "Question Oui / Non";
+		if (this instanceof Translation)
+			return "Question de traduction";
+		if (this instanceof SimpleQuestion)
+			return "Question simple";
+		return "question de type inconnu";
+	}
+
+	public abstract String getResume();
 }

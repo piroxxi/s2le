@@ -10,6 +10,7 @@ import fr.piroxxi.s2le.model.Difficulty;
 import fr.piroxxi.s2le.model.Test;
 import fr.piroxxi.s2le.model.User;
 import fr.piroxxi.s2le.model.question.Question;
+import fr.piroxxi.s2le.model.question.QuestionType;
 
 public interface StoreServiceAsync {
 
@@ -30,5 +31,6 @@ public interface StoreServiceAsync {
 
 	void listeQuestions(String session, AsyncCallback<Question[]> callback);
 
-
+	void createQuestion(String session, QuestionType questionType,
+			AsyncCallback<String> callback);
 }

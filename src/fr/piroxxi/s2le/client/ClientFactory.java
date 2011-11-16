@@ -41,7 +41,7 @@ public interface ClientFactory {
 	CreateTestView getCreateTestView();
 
 	TestRunningView getTestRunningView();
-	
+
 	SessionManager getSessionManager();
 
 	ResultTestView getResultTestView();

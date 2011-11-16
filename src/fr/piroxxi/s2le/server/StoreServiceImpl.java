@@ -15,7 +15,12 @@ import fr.piroxxi.s2le.model.Category;
 import fr.piroxxi.s2le.model.Difficulty;
 import fr.piroxxi.s2le.model.Test;
 import fr.piroxxi.s2le.model.User;
+import fr.piroxxi.s2le.model.question.MultiChoicesQuestion;
 import fr.piroxxi.s2le.model.question.Question;
+import fr.piroxxi.s2le.model.question.QuestionType;
+import fr.piroxxi.s2le.model.question.SimpleQuestion;
+import fr.piroxxi.s2le.model.question.Translation;
+import fr.piroxxi.s2le.model.question.YesNoQuestion;
 import fr.piroxxi.s2le.server.injector.ServerModule;
 import fr.piroxxi.s2le.server.security.SessionManager;
 import fr.piroxxi.s2le.shared.StoreService;
@@ -199,5 +204,37 @@ public class StoreServiceImpl extends RemoteServiceServlet implements
 		}
 
 		return questions;
+	}
+
+	@Override
+	public String createQuestion(String session, QuestionType questionType)
+			throws LogginException {
+		if (!sessionManager.isValide(session)) {
+			throw new LogginException("vous n'êtes pas connecté");
+		}
+
+		Question question = null;
+		switch (questionType) {
+		case MultiChoiceQuestion:
+			question = new MultiChoicesQuestion();
+			break;
+		case SimpleQuestion:
+			question = new SimpleQuestion();
+			break;
+		case Translation:
+			question = new Translation();
+			break;
+		case YesNoQuestion:
+			question = new YesNoQuestion();
+			break;
+		}
+
+		if (question == null) {
+			return null;
+		}
+
+		question.setCreatorId(sessionManager.getUserId(session));
+		storage.store(Question.class, question);
+		return question.getId();
 	}
 }

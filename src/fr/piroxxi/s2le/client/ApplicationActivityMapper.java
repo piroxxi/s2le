@@ -5,7 +5,7 @@ import com.google.gwt.activity.shared.ActivityMapper;
 import com.google.gwt.place.shared.Place;
 
 import fr.piroxxi.s2le.client.hello.HelloActivity;
-import fr.piroxxi.s2le.client.places.CreateQuestionPlace;
+import fr.piroxxi.s2le.client.places.StartQuestionCreationPlace;
 import fr.piroxxi.s2le.client.places.CreateTestPlace;
 import fr.piroxxi.s2le.client.places.ErrorPlace;
 import fr.piroxxi.s2le.client.places.HelloPlace;
@@ -36,7 +36,7 @@ public class ApplicationActivityMapper implements ActivityMapper {
 		} else if (place instanceof CreateTestPlace) {
 			return new CreateTestActivity(clientFactory);
 
-		} else if (place instanceof CreateQuestionPlace) {
+		} else if (place instanceof StartQuestionCreationPlace) {
 			return new CreateQuestionActivity(clientFactory);
 
 		} else if (place instanceof TestPlace) {

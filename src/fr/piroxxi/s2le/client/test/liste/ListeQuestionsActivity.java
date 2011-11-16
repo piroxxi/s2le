@@ -2,43 +2,56 @@ package fr.piroxxi.s2le.client.test.liste;
 
 import com.google.gwt.activity.shared.AbstractActivity;
 import com.google.gwt.event.shared.EventBus;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 
 import fr.piroxxi.s2le.client.ClientFactory;
-import fr.piroxxi.s2le.client.places.CreateQuestionPlace;
+import fr.piroxxi.s2le.client.events.LoggedInEvent;
+import fr.piroxxi.s2le.client.events.LoggedOutEvent;
+import fr.piroxxi.s2le.client.events.LoggingEventHandler;
+import fr.piroxxi.s2le.client.places.StartQuestionCreationPlace;
+import fr.piroxxi.s2le.client.places.EditQuestionPlace;
 import fr.piroxxi.s2le.client.ui.SessionManager.SessionVerifier;
 import fr.piroxxi.s2le.model.question.Question;
 
 public class ListeQuestionsActivity extends AbstractActivity implements
-		ListeQuestionsView.Delegate {
+		ListeQuestionsView.Delegate, LoggingEventHandler{
 
 	private final ClientFactory clientFactory;
 	private ListeQuestionsView view;
 
 	public ListeQuestionsActivity(final ClientFactory clientFactory) {
 		this.clientFactory = clientFactory;
-		this.clientFactory.getSessionManager().isLoggedIn(new SessionVerifier() {
+		
+		this.clientFactory.getEventBus().addHandler(LoggedInEvent.TYPE, this);
+		this.clientFactory.getEventBus().addHandler(LoggedOutEvent.TYPE, this);
+		
+		this.clientFactory.getSessionManager().isLoggedIn(
+				new SessionVerifier() {
 
-			@Override
-			public void isLoggedIn(boolean loggedIn) {
-				clientFactory.getStoreService().listeQuestions(
-						clientFactory.getSessionManager().getSessionId(),
-						new AsyncCallback<Question[]>() {
+					@Override
+					public void isLoggedIn(boolean loggedIn) {
+						showQuestion();
+					}
+				});
+	}
 
-							@Override
-							public void onSuccess(Question[] result) {
-								view.setQuestions(result);
-							}
+	private void showQuestion() {
+		this.clientFactory.getStoreService().listeQuestions(
+				this.clientFactory.getSessionManager().getSessionId(),
+				new AsyncCallback<Question[]>() {
 
-							@Override
-							public void onFailure(Throwable caught) {
-								Window.alert("bon bah :/ on a pas reussi a récupérer la liste des questions :) ");
-							}
-						});
-			}
-		});
+					@Override
+					public void onSuccess(Question[] result) {
+						view.hideErrorPanel();
+						view.setQuestions(result);
+					}
+
+					@Override
+					public void onFailure(Throwable caught) {
+						view.showErrorPanel("Impossible de récupérer la liste des questions tant que vous n'êtes pas connecté(e).");
+					}
+				});
 	}
 
 	@Override
@@ -50,7 +63,23 @@ public class ListeQuestionsActivity extends AbstractActivity implements
 
 	@Override
 	public void createQuestion() {
-		this.clientFactory.getPlaceController().goTo(new CreateQuestionPlace());
+		this.clientFactory.getPlaceController().goTo(new StartQuestionCreationPlace());
+	}
+
+	@Override
+	public void editQuestion(Question selectedObject) {
+		this.clientFactory.getPlaceController().goTo(
+				new EditQuestionPlace(selectedObject.getId()));
+	}
+
+	@Override
+	public void loggedIn(LoggedInEvent loggedInEvent) {
+		showQuestion();
+	}
+
+	@Override
+	public void loggedOut(LoggedOutEvent loggedOutEvent) {
+		view.showErrorPanel("Impossible de récupérer la liste des questions tant que vous n'êtes pas connecté(e).");
 	}
 
 }

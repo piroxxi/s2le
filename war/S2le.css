@@ -92,6 +92,10 @@ body {
 	/*text-shadow: 0px 0px 21px #DDD;*/
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 02f7bf19a7b35f738199e3d7fd581404405cec13
 .gwt-Button {
 	margin: 0;
 	padding: 2px 8px;
@@ -100,6 +104,7 @@ body {
 	cursor: hand;
 	font-size: small;
 	background: #DDD;
+<<<<<<< HEAD
 	border: 1px solid #BBB;
 	border-bottom: 1px solid #666;
 	border-right: 1px solid #666;
@@ -119,4 +124,13 @@ body {
 
 .translation_decalage {
 	padding-left: 80px;
+=======
+	
+	border: 1px solid #BBB;
+	border-bottom: 1px solid #666;
+	border-right: 1px solid #666;
+	
+	border-radius: 14px;
+	-moz-border-radius: 3px;
+>>>>>>> 02f7bf19a7b35f738199e3d7fd581404405cec13
 }

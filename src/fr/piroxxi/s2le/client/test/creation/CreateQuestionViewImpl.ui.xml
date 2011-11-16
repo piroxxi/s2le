@@ -1,8 +1,58 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
-	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:a="urn:import:fr.piroxxi.s2le.client.asside">
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:a="urn:import:fr.piroxxi.s2le.client.asside"
+	xmlns:p="urn:import:fr.piroxxi.s2le.client.ui.panel.progress" xmlns:m="urn:import:fr.piroxxi.s2le.client.ui.panel.mini">
 
-	<g:VerticalPanel>
-		Très prochainement, ici, vous pourrez créer une nouvelle question :)
+	<ui:style>
+		.miniBloc {
+			border: 1px solid rgba(0, 0, 0, 0.2);
+			border-radius: 5px;
+			text-align: center;
+			padding: 5px;
+			height: 100%;
+			width: 200px;
+			height: 125px;
+			margin: auto;
+		}
+		
+		.miniBloc:hover {
+			border: 1px solid rgba(0, 0, 0, 0.5);
+			background-color: #D2E084;
+		}
+		
+		.table {
+			height: 320px;
+			width: 450px;
+			margin: auto;
+		}
+	</ui:style>
+
+	<g:VerticalPanel width="100%">
+		<p:ProgressWidget percentage="20" />
+		<g:Label>Choisissez le type de question que vous désirez créer:</g:Label>
+		<g:HTMLPanel>
+			<table class="{style.table}">
+				<tr>
+					<td>
+						<m:MiniMultiChoiceQuestion ui:field="multiChoiceQuestion"
+							styleName="{style.miniBloc}" />
+					</td>
+					<td>
+						<m:MiniYesNoQuestion ui:field="yesNoQuestion"
+							styleName="{style.miniBloc}" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<m:MiniTranslationQuestion ui:field="translationQuestion"
+							styleName="{style.miniBloc}" />
+					</td>
+					<td>
+						<m:MiniSimpleQuestion ui:field="simpleQuestion"
+							styleName="{style.miniBloc}" />
+					</td>
+				</tr>
+			</table>
+		</g:HTMLPanel>
 	</g:VerticalPanel>
 </ui:UiBinder>

@@ -26,6 +26,8 @@ public class AssideActivity extends AbstractActivity implements
 		this.factory = factory;
 		this.view = factory.getAssideView();
 		view.setDelegate(this);
+		
+		activity = new AdvisorActivity(factory);
 
 		activity = new AdvisorActivity(factory);
 

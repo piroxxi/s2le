@@ -48,7 +48,7 @@ public class SessionManager {
 	 */
 	public boolean isValide(String sessionId) {
 		System.out.println("[SessionManager] verification de la session "
-				+ sessionId + "    -> " + this);
+				+ sessionId);
 		if (sessions.get(sessionId) == null) {
 			System.out.println("[SessionManager] session inexistante");
 			return false;
@@ -56,8 +56,12 @@ public class SessionManager {
 
 		Date sessionTimout = sessionsTimmer.get(sessionId);
 		System.out.println("[SessionManager] la session expire en "
-				+ sessionTimout + " mais on est en " + new Date() + "    -> "
-				+ this);
+				+ sessionTimout + " mais on est en " + new Date());
+		if(sessionTimout.after(new Date())){
+			System.out.println("[SessionManager]\t=> La session est valide!\n");
+		}else{
+			System.out.println("[SessionManager]\t=> La session n'est pas valide!\n");
+		}
 		return sessionTimout.after(new Date());
 	}
 

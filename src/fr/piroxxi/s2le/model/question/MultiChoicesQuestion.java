@@ -99,6 +99,11 @@ public class MultiChoicesQuestion extends Question {
 	@Override
 	public String toString() {
 		return "MultyChoicesQuestion : " + question + " => " + answers
-				+ " (good : " + answers[rightAnswer] + ")";
+				+ " (good : " + ((answers!=null)?answers[rightAnswer]:"????") + ")";
+	}
+
+	@Override
+	public String getResume() {
+		return getQuestion();
 	}
 }

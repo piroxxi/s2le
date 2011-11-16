@@ -2,12 +2,15 @@
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
 	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:c="urn:import:com.google.gwt.user.cellview.client">
 
-	<g:HTMLPanel>
-		Voici la liste des questions que vous avez crée :
-		<br />
-		<c:CellList ui:field="questions" />
+	<g:FlowPanel>
+		<g:HTMLPanel ui:field="mainPanel">
+			Voici la liste des questions que vous avez crée :
+			<br />
+			<c:CellTable ui:field="questions" />
 
-		<br />
-		<g:Button ui:field="createQuestion">Créer une nouvelle question.</g:Button>
-	</g:HTMLPanel>
+			<br />
+			<g:Button ui:field="createQuestion">Créer une nouvelle question.</g:Button>
+		</g:HTMLPanel>
+		<g:SimplePanel ui:field="errorPanel" />
+	</g:FlowPanel>
 </ui:UiBinder>

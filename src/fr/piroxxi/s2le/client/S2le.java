@@ -47,6 +47,8 @@ public class S2le implements EntryPoint {
 				historyMapper);
 		historyHandler.register(placeController, eventBus, new HelloPlace());
 
+		mainPanel.setHeight("100%");
+		mainPanel.setWidth("100%");
 		RootPanel.get("content").add(mainPanel);
 
 		// Goes to the place represented on URL else default place

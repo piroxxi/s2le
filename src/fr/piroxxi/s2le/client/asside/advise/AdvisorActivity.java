@@ -7,7 +7,7 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 
-import fr.piroxxi.s2le.client.ClientFactory;
+import fr.piroxxi.s2le.client.ClientFactory; 
 import fr.piroxxi.s2le.client.ui.SessionManager.SessionVerifier;
 import fr.piroxxi.s2le.model.Advise;
 

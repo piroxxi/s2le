@@ -68,4 +68,9 @@ public class YesNoQuestion extends Question {
 		return "Translation : " + question + " => " + answer;
 	}
 
+	@Override
+	public String getResume() {
+		return getQuestion();
+	}
+
 }

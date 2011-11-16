@@ -70,8 +70,9 @@ public class TranslationQuestionPanel extends Composite implements
 	public void showQuestion(Translation question) {
 		questionAsken = question;
 		this.answer = false;
-		this.question.setText(question.getEnglishWord()
-				.replaceAll("\\(.*?\\)", "").replace("  ", " "));
+		this.question.setText(Translation.toReadableFormat(question
+				.getEnglishWord()));
+
 		Scheduler.get().scheduleDeferred(new ScheduledCommand() {
 			public void execute() {
 				answerBox.setFocus(true);
@@ -108,8 +109,8 @@ public class TranslationQuestionPanel extends Composite implements
 			error.setText("bonne reponse!");
 		} else {
 			error.setText("Faux! La bonne reponse était \""
-					+ questionAsken.getFrenchWord().toLowerCase()
-							.replaceAll("\\(.*?\\)", "") + "\" .");
+					+ Translation.toReadableFormat(questionAsken
+							.getFrenchWord()) + "\" .");
 		}
 
 		next.setVisible(true);

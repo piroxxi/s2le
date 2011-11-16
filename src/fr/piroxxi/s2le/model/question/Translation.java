@@ -69,4 +69,14 @@ public class Translation extends Question {
 		return "Translation : " + englishWord + " => " + frenchWord;
 	}
 
+	public static String toReadableFormat(String regex) {
+		return regex.replaceAll("\\|[^)]*\\)", "").replaceAll("[()]", "")
+				.replace("  ", " ").replace("$ ", "");
+	}
+
+	@Override
+	public String getResume() {
+		return getEnglishWord() + " - " + getFrenchWord();
+	}
+
 }

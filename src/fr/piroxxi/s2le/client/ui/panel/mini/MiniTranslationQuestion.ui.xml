@@ -1,0 +1,13 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+
+	<g:Button ui:field="main">
+		Ceci sera bientot un bloc
+		"MiniTranslationQuestion". :)
+		<br />
+		<br />
+
+		En gros, l'idée c'est de traduire des mots :p
+	</g:Button>
+</ui:UiBinder>

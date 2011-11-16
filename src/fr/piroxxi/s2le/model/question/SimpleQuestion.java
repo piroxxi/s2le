@@ -70,4 +70,9 @@ public class SimpleQuestion extends Question {
 	public String toString() {
 		return "SimpleQuestion : " + question + " => " + answer;
 	}
+
+	@Override
+	public String getResume() {
+		return getQuestion();
+	}
 }

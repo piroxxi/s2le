@@ -24,7 +24,7 @@ public class SimpleQuestionPanel extends Composite implements
 	Label question;
 
 	@UiField
-	TextBox answers;
+	TextBox answerBox;
 
 	@UiField
 	Label error;
@@ -58,7 +58,14 @@ public class SimpleQuestionPanel extends Composite implements
 
 	@UiHandler("ok")
 	public void ok(ClickEvent event) {
-		if (answers.getText().equalsIgnoreCase(questionAsken.getAnswer())) {
+		this.answer = answerBox
+				.getText()
+				.toLowerCase()
+				.matches(
+						questionAsken.getAnswer().toLowerCase()
+								.replace(")", "|)").replace(" ", " ?"));
+
+		if (answer) {
 			error.setText("bonne reponse!");
 			this.answer = true;
 		} else {
@@ -70,7 +77,7 @@ public class SimpleQuestionPanel extends Composite implements
 		next.setVisible(true);
 		error.setVisible(true);
 		error.setStyleName((answer)?"question_right":"question_false");
-		answers.setVisible(false);
+		answerBox.setEnabled(false);
 	}
 
 	@UiHandler("next")

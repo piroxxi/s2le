@@ -103,6 +103,15 @@ public class StorageRemplisseur {
 				Difficulty.medium,
 				"Quel est le sens du mot 'catered' dans la phrase suivante : \"A professionally catered event.\"",
 				"(traiteur|pris en charge)");
+		/**
+		 * * D'oh! on a grave un problème! Dans le cas ou plusieurs mots sont
+		 * accéptables...
+		 * <p>
+		 * Surement qu'on devrait faire un truc sexy du style: un liste de
+		 * "rexep" :p :)
+		 * <p>
+		 * Ouai... faisont ca :)
+		 */
 		storage.store(Question.class, catered);
 
 		MultiChoicesQuestion whichWitchOrWhat = new MultiChoicesQuestion(
