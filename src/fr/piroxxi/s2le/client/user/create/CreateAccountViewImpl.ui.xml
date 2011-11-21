@@ -1,0 +1,60 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:a="urn:import:fr.piroxxi.s2le.client.asside"
+	xmlns:p="urn:import:fr.piroxxi.s2le.client.ui.panel" xmlns:s="urn:import:fr.piroxxi.s2le.client.ui">
+
+	<ui:style>
+		.title {
+			margin-bottom: 20px;
+		}
+		
+		.start {
+			margin-top: 20px;
+		}
+	</ui:style>
+
+	<g:VerticalPanel>
+		<g:Label styleName="{style.title}">
+			Creation d'un nouveau compte
+		</g:Label>
+
+		<s:LigneFormulaire ui:field="ligne_nom" libelle="pseudo"
+			help="obligatoire">
+			<s:content>
+				<g:TextBox ui:field="nom" />
+			</s:content>
+		</s:LigneFormulaire>
+
+		<s:LigneFormulaire ui:field="ligne_email" libelle="adresse électronique"
+			help="obligatoire">
+			<s:content>
+				<g:TextBox ui:field="email" />
+			</s:content>
+		</s:LigneFormulaire>
+
+		<s:LigneFormulaire ui:field="ligne_password1"
+			libelle="mot de passe" help="Au moins 6 caractères.">
+			<s:content>
+				<g:PasswordTextBox ui:field="password1" />
+			</s:content>
+		</s:LigneFormulaire>
+
+		<s:LigneFormulaire ui:field="ligne_password2"
+			libelle="configmation">
+			<s:content>
+				<g:PasswordTextBox ui:field="password2" />
+			</s:content>
+		</s:LigneFormulaire>
+
+		<s:LigneFormulaire ui:field="ligne_conditions"
+			help="oui, je sais, pour l'instant il n'y en a pas encore :p. Mais ca ne saurait tarder... :)">
+			<s:content>
+				<g:CheckBox ui:field="conditions">J'ai lu et pris connaissances des
+					conditions génerales
+					d'utilisation</g:CheckBox>
+			</s:content>
+		</s:LigneFormulaire>
+
+		<g:Button ui:field="create" styleName="{style.start}">Créer un nouveau compte</g:Button>
+	</g:VerticalPanel>
+</ui:UiBinder>

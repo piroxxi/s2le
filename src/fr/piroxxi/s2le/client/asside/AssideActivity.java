@@ -13,6 +13,7 @@ import fr.piroxxi.s2le.client.events.LoggedOutEvent;
 import fr.piroxxi.s2le.client.events.LoggingEventHandler;
 import fr.piroxxi.s2le.client.events.QuestionAnsweredEvent;
 import fr.piroxxi.s2le.client.events.QuestionAnsweredEventHandler;
+import fr.piroxxi.s2le.client.places.CreateAccountPlace;
 import fr.piroxxi.s2le.model.User;
 
 public class AssideActivity extends AbstractActivity implements
@@ -26,11 +27,11 @@ public class AssideActivity extends AbstractActivity implements
 		this.factory = factory;
 		this.view = factory.getAssideView();
 		view.setDelegate(this);
-		
+
 		activity = new AdvisorActivity(factory);
 
 		activity = new AdvisorActivity(factory);
-		
+
 		this.factory.getEventBus().addHandler(LoggedInEvent.TYPE, this);
 		this.factory.getEventBus().addHandler(LoggedOutEvent.TYPE, this);
 		this.factory.getEventBus().addHandler(QuestionAnsweredEvent.TYPE, this);
@@ -49,7 +50,7 @@ public class AssideActivity extends AbstractActivity implements
 
 	@Override
 	public void createAccount() {
-		Window.alert("(AssideActivity)TODO: creation d'un nouveau compte");
+		this.factory.getPlaceController().goTo(new CreateAccountPlace());
 	}
 
 	@Override

@@ -14,6 +14,7 @@ import fr.piroxxi.s2le.client.test.TestRunningView;
 import fr.piroxxi.s2le.client.test.creation.CreateQuestionView;
 import fr.piroxxi.s2le.client.test.liste.ListeQuestionsView;
 import fr.piroxxi.s2le.client.ui.SessionManager;
+import fr.piroxxi.s2le.client.user.create.CreateAccountView;
 import fr.piroxxi.s2le.shared.StoreServiceAsync;
 import fr.piroxxi.s2le.shared.security.SecurityServiceAsync;
 
@@ -49,4 +50,6 @@ public interface ClientFactory {
 	AdvisorView getAdvisorView();
 
 	CreateQuestionView getCreateQuestionView();
+
+	CreateAccountView getCreateAccountView();
 }

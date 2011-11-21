@@ -3,6 +3,7 @@ package fr.piroxxi.s2le.client;
 import com.google.gwt.place.shared.PlaceHistoryMapper;
 import com.google.gwt.place.shared.WithTokenizers;
 
+import fr.piroxxi.s2le.client.places.CreateAccountPlace;
 import fr.piroxxi.s2le.client.places.EditNewQuestionPlace;
 import fr.piroxxi.s2le.client.places.StartQuestionCreationPlace;
 import fr.piroxxi.s2le.client.places.CreateTestPlace;
@@ -18,6 +19,7 @@ import fr.piroxxi.s2le.client.places.TestPlace;
 		TestPlace.Tokenizer.class, ResultTestPlace.Tokenizer.class,
 		StartQuestionCreationPlace.Tokenizer.class,
 		EditQuestionPlace.Tokenizer.class, ErrorPlace.Tokenizer.class,
-		EditNewQuestionPlace.Tokenizer.class })
+		EditNewQuestionPlace.Tokenizer.class,
+		CreateAccountPlace.Tokenizer.class })
 public interface ApplicationPlaceHistoryMapper extends PlaceHistoryMapper {
 }

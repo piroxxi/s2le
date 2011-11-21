@@ -1,72 +1,9 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
 	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:a="urn:import:fr.piroxxi.s2le.client.asside"
-	xmlns:p="urn:import:fr.piroxxi.s2le.client.ui.panel">
+	xmlns:p="urn:import:fr.piroxxi.s2le.client.ui.panel" xmlns:s="urn:import:fr.piroxxi.s2le.client.ui">
 
 	<ui:style>
-		.line {
-			position: relative;
-			padding-bottom: 13px;
-			width: 100%;
-		}
-		
-		.line:hover {
-			background-color: rgba(255, 255, 255, 0.7);
-		}
-		
-		.leftPanel {
-			width: 200px;
-			text-align: right;
-			padding-right: 23px;
-			color: rgba(0, 0, 0, 0.4);
-			padding-top: 3px;
-		}
-		
-		.rightPanel {
-			width: 525px;
-		}
-		
-		.help {
-			position: absolute;
-			color: #777;
-			border: 1px solid #BBB;
-			background: none;
-			font-size: 7px;
-			left: 202px;
-			top: 15px;
-			padding: 0;
-			border-radius: 17px;
-			height: 8px;
-			width: 6px;
-			padding-top: 0.9px;
-			padding-left: 2px;
-		}
-		
-		.help:hover {
-			color: #777;
-			background-color: #BBB;
-		}
-		
-		.help span {
-			display: none;
-		}
-		
-		.help:hover span {
-			display: block;
-			position: absolute;
-			top: 5px;
-			left: 15px;
-			width: 175px;
-			border: 1px solid #777;
-			border-radius: 5px;
-			background-color: rgba(210, 224, 132, 0.7);
-			color: #000;
-			text-align: center;
-			font-size: 12px;
-			padding: 3px;
-			z-index: 1;
-		}
-		
 		.title {
 			margin-bottom: 20px;
 		}
@@ -82,55 +19,31 @@
 			configurer, ou le lancer avec les paramètres par défaut.
 		</g:Label>
 
-		<g:HorizontalPanel styleName="{style.line}">
-			<g:Label styleName="{style.leftPanel}">
-				difficulté
-			</g:Label>
-			<p:DifficultyChooser ui:field="difficultyChooser"
-				styleName="{style.rightPanel}" />
-		</g:HorizontalPanel>
+		<s:LigneFormulaire libelle="difficulté">
+			<s:content>
+				<p:DifficultyChooser ui:field="difficultyChooser" />
+			</s:content>
+		</s:LigneFormulaire>
 
-		<g:HorizontalPanel styleName="{style.line}">
-			<g:HTMLPanel>
-				<div class="{style.help}">
-					?
-					<span>
-						Si la liste des catégories est vide, alors
-						toutes les
-						catégories seront utilisées pour ce test.
-					</span>
-				</div>
-			</g:HTMLPanel>
-			<g:Label styleName="{style.leftPanel}">
-				categories
-			</g:Label>
-			<p:CategoryChooser ui:field="categoryChooser"
-				styleName="{style.rightPanel}" />
-		</g:HorizontalPanel>
+		<s:LigneFormulaire libelle="categories"
+			help="Si la liste des catégories est vide, alors toutes les catégories seront utilisées pour ce test.">
+			<s:content>
+				<p:CategoryChooser ui:field="categoryChooser" />
+			</s:content>
+		</s:LigneFormulaire>
 
-		<g:HorizontalPanel styleName="{style.line}">
-			<g:HTMLPanel>
-				<div class="{style.help}">
-					?
-					<span>
-						Il s'agit de la taille maximal, si il n'existe pas
-						suffisament de question répondants au critères, le test peut être
-						plus court.
-					</span>
-				</div>
-			</g:HTMLPanel>
-			<g:Label styleName="{style.leftPanel}">taille du test</g:Label>
-			<g:FlowPanel styleName="{style.rightPanel}">
+		<s:LigneFormulaire libelle="taille du test"
+			help="Il s'agit de la taille maximal, si il n'existe pas suffisament de question répondants au critères, le test peut être plus court.">
+			<s:content>
 				<g:IntegerBox ui:field="size" maxLength="5" width="38px">10</g:IntegerBox>
-			</g:FlowPanel>
-		</g:HorizontalPanel>
+			</s:content>
+		</s:LigneFormulaire>
 
-		<g:HorizontalPanel styleName="{style.line}">
-			<g:Label styleName="{style.leftPanel}"></g:Label>
-			<g:FlowPanel styleName="{style.rightPanel}">
+		<s:LigneFormulaire>
+			<s:content>
 				<g:CheckBox ui:field="chrono">chronometré</g:CheckBox>
-			</g:FlowPanel>
-		</g:HorizontalPanel>
+			</s:content>
+		</s:LigneFormulaire>
 
 		<g:Button ui:field="start" styleName="{style.start}">Commencer le test</g:Button>
 	</g:VerticalPanel>

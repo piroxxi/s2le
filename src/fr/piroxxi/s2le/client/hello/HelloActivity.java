@@ -2,10 +2,10 @@ package fr.piroxxi.s2le.client.hello;
 
 import com.google.gwt.activity.shared.AbstractActivity;
 import com.google.gwt.event.shared.EventBus;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 
 import fr.piroxxi.s2le.client.ClientFactory;
+import fr.piroxxi.s2le.client.places.CreateAccountPlace;
 
 public class HelloActivity extends AbstractActivity implements
 		HelloView.Delegate {
@@ -27,7 +27,7 @@ public class HelloActivity extends AbstractActivity implements
 
 	@Override
 	public void creerCompte() {
-		Window.alert("(HelloActivity) TODO : créer un compte ! :p ");
+		this.factory.getPlaceController().goTo(new CreateAccountPlace());
 	}
 
 }

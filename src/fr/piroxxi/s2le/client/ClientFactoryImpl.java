@@ -26,6 +26,8 @@ import fr.piroxxi.s2le.client.test.creation.CreateQuestionViewImpl;
 import fr.piroxxi.s2le.client.test.liste.ListeQuestionsView;
 import fr.piroxxi.s2le.client.test.liste.ListeQuestionsViewImpl;
 import fr.piroxxi.s2le.client.ui.SessionManager;
+import fr.piroxxi.s2le.client.user.create.CreateAccountView;
+import fr.piroxxi.s2le.client.user.create.CreateAccountViewImpl;
 import fr.piroxxi.s2le.shared.StoreService;
 import fr.piroxxi.s2le.shared.StoreServiceAsync;
 import fr.piroxxi.s2le.shared.security.SecurityService;
@@ -124,5 +126,10 @@ public class ClientFactoryImpl implements ClientFactory {
 	@Override
 	public CreateQuestionView getCreateQuestionView() {
 		return new CreateQuestionViewImpl();
+	}
+
+	@Override
+	public CreateAccountView getCreateAccountView() {
+		return new CreateAccountViewImpl();
 	}
 }

@@ -1,0 +1,90 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:a="urn:import:fr.piroxxi.s2le.client.asside"
+	xmlns:p="urn:import:fr.piroxxi.s2le.client.ui.panel">
+
+	<ui:style>
+		.line {
+			position: relative;
+			padding-bottom: 13px;
+			width: 100%;
+		}
+		
+		.line:hover {
+			background-color: rgba(255, 255, 255, 0.7);
+		}
+		
+		.leftPanel {
+			width: 200px;
+			text-align: right;
+			padding-right: 23px;
+			color: rgba(0, 0, 0, 0.4);
+			padding-top: 3px;
+		}
+		
+		.rightPanel {
+			width: 525px;
+		}
+		
+		.help {
+			position: absolute;
+			color: #777;
+			border: 1px solid #BBB;
+			background: none;
+			font-size: 7px;
+			left: 202px;
+			top: 15px;
+			padding: 0;
+			border-radius: 17px;
+			height: 8px;
+			width: 6px;
+			padding-top: 0.9px;
+			padding-left: 2px;
+		}
+		
+		.help:hover {
+			color: #777;
+			background-color: #BBB;
+		}
+		
+		.help span {
+			display: none;
+		}
+		
+		.help:hover span {
+			display: block;
+			position: absolute;
+			top: 5px;
+			left: 15px;
+			width: 175px;
+			border: 1px solid #777;
+			border-radius: 5px;
+			background-color: rgba(210, 224, 132, 0.7);
+			color: #000;
+			text-align: center;
+			font-size: 12px;
+			padding: 3px;
+			z-index: 1;
+		}
+		
+		.error {
+			color: red;
+			font-size: 11px;
+		}
+	</ui:style>
+
+	<g:HorizontalPanel styleName="{style.line}">
+		<g:HTMLPanel ui:field="help">
+			<div class="{style.help}">
+				?
+				<span ui:field="helpText" />
+			</div>
+		</g:HTMLPanel>
+		<g:Label ui:field="title" styleName="{style.leftPanel}" />
+
+		<g:VerticalPanel>
+			<g:SimplePanel ui:field="component" styleName="{style.rightPanel}" />
+			<g:Label ui:field="error" styleName="{style.error}" />
+		</g:VerticalPanel>
+	</g:HorizontalPanel>
+</ui:UiBinder>
