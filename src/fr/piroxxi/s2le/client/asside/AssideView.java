@@ -11,8 +11,6 @@ public interface AssideView extends View<AssideView.Delegate> {
 	void showUserStats(User user);
 
 	void hideUserStats();
-
-	void setDelegate(Delegate delegate);
 	
 	AcceptsOneWidget getAdvisorPanel();
 

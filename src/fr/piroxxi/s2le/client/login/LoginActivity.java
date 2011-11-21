@@ -19,6 +19,7 @@ public class LoginActivity extends AbstractActivity implements
 	@Inject
 	public LoginActivity(ClientFactory factory) {
 		this.factory = factory;
+		
 		this.view = factory.getLoginView();
 		this.view.setDelegate(this);
 

@@ -30,7 +30,7 @@ public class AssideActivity extends AbstractActivity implements
 		activity = new AdvisorActivity(factory);
 
 		activity = new AdvisorActivity(factory);
-
+		
 		this.factory.getEventBus().addHandler(LoggedInEvent.TYPE, this);
 		this.factory.getEventBus().addHandler(LoggedOutEvent.TYPE, this);
 		this.factory.getEventBus().addHandler(QuestionAnsweredEvent.TYPE, this);

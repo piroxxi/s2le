@@ -49,5 +49,4 @@ public interface ClientFactory {
 	AdvisorView getAdvisorView();
 
 	CreateQuestionView getCreateQuestionView();
-
 }
