@@ -29,5 +29,4 @@ public class HelloActivity extends AbstractActivity implements
 	public void creerCompte() {
 		this.factory.getPlaceController().goTo(new CreateAccountPlace());
 	}
-
 }
