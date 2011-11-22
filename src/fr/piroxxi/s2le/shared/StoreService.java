@@ -33,6 +33,9 @@ public interface StoreService extends RemoteService {
 	Question[] listeQuestions(String session) throws LogginException;
 
 	Advise getRandomAdvise(String session);
-	
-	String createQuestion(String session, QuestionType questionType) throws LogginException;
+
+	String createQuestion(String session, QuestionType questionType)
+			throws LogginException;
+
+	String createAccount(String nom, String email, String password);
 }

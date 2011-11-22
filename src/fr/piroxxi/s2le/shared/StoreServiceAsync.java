@@ -33,4 +33,7 @@ public interface StoreServiceAsync {
 
 	void createQuestion(String session, QuestionType questionType,
 			AsyncCallback<String> callback);
+
+	void createAccount(String nom, String email, String password,
+			AsyncCallback<String> callback);
 }

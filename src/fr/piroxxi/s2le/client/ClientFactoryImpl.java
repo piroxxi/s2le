@@ -26,6 +26,8 @@ import fr.piroxxi.s2le.client.test.creation.CreateQuestionViewImpl;
 import fr.piroxxi.s2le.client.test.liste.ListeQuestionsView;
 import fr.piroxxi.s2le.client.test.liste.ListeQuestionsViewImpl;
 import fr.piroxxi.s2le.client.ui.SessionManager;
+import fr.piroxxi.s2le.client.user.confirm.CreateAccountConfirmationView;
+import fr.piroxxi.s2le.client.user.confirm.CreateAccountConfirmationViewImpl;
 import fr.piroxxi.s2le.client.user.create.CreateAccountView;
 import fr.piroxxi.s2le.client.user.create.CreateAccountViewImpl;
 import fr.piroxxi.s2le.shared.StoreService;
@@ -52,6 +54,7 @@ public class ClientFactoryImpl implements ClientFactory {
 	private final HelloView helloView = new HelloViewImpl();
 	private final MenuView menuView = new MenuViewImpl();
 	private final AdvisorView advisorView = new AdvisorViewImpl();
+	private final CreateAccountConfirmationView createAccountConfirmationView = new CreateAccountConfirmationViewImpl();
 
 	@Override
 	public EventBus getEventBus() {
@@ -131,5 +134,10 @@ public class ClientFactoryImpl implements ClientFactory {
 	@Override
 	public CreateAccountView getCreateAccountView() {
 		return new CreateAccountViewImpl();
+	}
+
+	@Override
+	public CreateAccountConfirmationView getCreateAccountConfirmationView() {
+		return createAccountConfirmationView;
 	}
 }

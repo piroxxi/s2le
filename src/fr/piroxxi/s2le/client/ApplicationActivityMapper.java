@@ -5,6 +5,7 @@ import com.google.gwt.activity.shared.ActivityMapper;
 import com.google.gwt.place.shared.Place;
 
 import fr.piroxxi.s2le.client.hello.HelloActivity;
+import fr.piroxxi.s2le.client.places.CreateAccountConfirmationPlace;
 import fr.piroxxi.s2le.client.places.CreateAccountPlace;
 import fr.piroxxi.s2le.client.places.StartQuestionCreationPlace;
 import fr.piroxxi.s2le.client.places.CreateTestPlace;
@@ -19,6 +20,7 @@ import fr.piroxxi.s2le.client.test.TestRunningActivity;
 import fr.piroxxi.s2le.client.test.creation.CreateQuestionActivity;
 import fr.piroxxi.s2le.client.test.liste.ListeQuestionsActivity;
 import fr.piroxxi.s2le.client.ui.error.ErrorActivity;
+import fr.piroxxi.s2le.client.user.confirm.CreateAccountConfirmationActivity;
 import fr.piroxxi.s2le.client.user.create.CreateAccountActivity;
 
 public class ApplicationActivityMapper implements ActivityMapper {
@@ -37,7 +39,10 @@ public class ApplicationActivityMapper implements ActivityMapper {
 
 		} else if (place instanceof CreateAccountPlace) {
 			return new CreateAccountActivity(clientFactory);
-
+			
+		}else if (place instanceof CreateAccountConfirmationPlace){
+			return new CreateAccountConfirmationActivity(clientFactory, (CreateAccountConfirmationPlace) place);
+			
 		} else if (place instanceof CreateTestPlace) {
 			return new CreateTestActivity(clientFactory);
 

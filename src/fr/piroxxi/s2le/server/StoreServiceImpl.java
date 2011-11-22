@@ -237,4 +237,15 @@ public class StoreServiceImpl extends RemoteServiceServlet implements
 		storage.store(Question.class, question);
 		return question.getId();
 	}
+
+	@Override
+	public String createAccount(String nom, String email, String password) {
+		// step 1 : verification que personne ne porte ce nom
+		User user = storage.getEntity(User.class, nom);
+		if (user != null) {
+			return "Erreur, ce nom d'utilisateur est déja pris.";
+		}
+		storage.store(User.class, new User(nom, password, email));
+		return null;
+	}
 }
