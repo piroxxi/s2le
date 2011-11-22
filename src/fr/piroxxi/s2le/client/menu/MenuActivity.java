@@ -6,8 +6,8 @@ import com.google.gwt.user.client.ui.AcceptsOneWidget;
 
 import fr.piroxxi.s2le.client.ClientFactory;
 import fr.piroxxi.s2le.client.places.CreateTestPlace;
-import fr.piroxxi.s2le.client.places.ErrorPlace;
 import fr.piroxxi.s2le.client.places.ListeQuestionsPlace;
+import fr.piroxxi.s2le.client.places.UserStatistiquesPlace;
 
 public class MenuActivity extends AbstractActivity implements MenuView.Delegate {
 
@@ -37,8 +37,7 @@ public class MenuActivity extends AbstractActivity implements MenuView.Delegate 
 
 	@Override
 	public void showStatistiques() {
-		this.factory.getPlaceController().goTo(
-				new ErrorPlace("désolé, mais c'est pas encore pret!"));
+		this.factory.getPlaceController().goTo(new UserStatistiquesPlace());
 	}
 
 }

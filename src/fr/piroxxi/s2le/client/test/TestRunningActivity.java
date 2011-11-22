@@ -56,6 +56,9 @@ public class TestRunningActivity extends AbstractActivity implements
 	}
 
 	private void printQuestion() {
+		if (test == null) {
+			return;
+		}
 		view.setTest(test.getId(), (test.getCurrentQuestionNumber() + 1) + "/"
 				+ test.getSize());
 		Question q = test.getCurrentQuestion();

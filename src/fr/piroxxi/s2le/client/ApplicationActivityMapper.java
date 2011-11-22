@@ -14,6 +14,7 @@ import fr.piroxxi.s2le.client.places.HelloPlace;
 import fr.piroxxi.s2le.client.places.ListeQuestionsPlace;
 import fr.piroxxi.s2le.client.places.ResultTestPlace;
 import fr.piroxxi.s2le.client.places.TestPlace;
+import fr.piroxxi.s2le.client.places.UserStatistiquesPlace;
 import fr.piroxxi.s2le.client.test.CreateTestActivity;
 import fr.piroxxi.s2le.client.test.ResultTestActivity;
 import fr.piroxxi.s2le.client.test.TestRunningActivity;
@@ -22,6 +23,7 @@ import fr.piroxxi.s2le.client.test.liste.ListeQuestionsActivity;
 import fr.piroxxi.s2le.client.ui.error.ErrorActivity;
 import fr.piroxxi.s2le.client.user.confirm.CreateAccountConfirmationActivity;
 import fr.piroxxi.s2le.client.user.create.CreateAccountActivity;
+import fr.piroxxi.s2le.client.user.stats.UserStatistiquesActivity;
 
 public class ApplicationActivityMapper implements ActivityMapper {
 	private ClientFactory clientFactory;
@@ -39,10 +41,11 @@ public class ApplicationActivityMapper implements ActivityMapper {
 
 		} else if (place instanceof CreateAccountPlace) {
 			return new CreateAccountActivity(clientFactory);
-			
-		}else if (place instanceof CreateAccountConfirmationPlace){
-			return new CreateAccountConfirmationActivity(clientFactory, (CreateAccountConfirmationPlace) place);
-			
+
+		} else if (place instanceof CreateAccountConfirmationPlace) {
+			return new CreateAccountConfirmationActivity(clientFactory,
+					(CreateAccountConfirmationPlace) place);
+
 		} else if (place instanceof CreateTestPlace) {
 			return new CreateTestActivity(clientFactory);
 
@@ -58,6 +61,9 @@ public class ApplicationActivityMapper implements ActivityMapper {
 		} else if (place instanceof ResultTestPlace) {
 			return new ResultTestActivity(clientFactory,
 					(ResultTestPlace) place);
+
+		} else if (place instanceof UserStatistiquesPlace) {
+			return new UserStatistiquesActivity(clientFactory);
 
 		} else if (place instanceof ErrorPlace) {
 			return new ErrorActivity(clientFactory, (ErrorPlace) place);

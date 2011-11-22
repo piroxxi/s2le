@@ -1,0 +1,46 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:s="urn:import:fr.piroxxi.s2le.client.ui">
+
+	<ui:style>
+		.title {
+			margin-bottom: 20px;
+		}
+	</ui:style>
+
+	<g:FlowPanel>
+		<g:Label ui:field="error" />
+		<g:VerticalPanel ui:field="formulaire">
+			<g:HTMLPanel styleName="{style.title}">
+				Statistiques du compte
+				<span ui:field="nom" class="bold" />
+				.
+			</g:HTMLPanel>
+
+			<s:LigneFormulaire libelle="nombre de questions répondues">
+				<s:content>
+					<g:Label ui:field="nbQuestions" />
+				</s:content>
+			</s:LigneFormulaire>
+
+			<s:LigneFormulaire libelle="nombre de réponses justes">
+				<s:content>
+					<g:Label ui:field="nbCorrectAnswer" />
+				</s:content>
+			</s:LigneFormulaire>
+
+			<s:LigneFormulaire libelle="nombre de tests commencés">
+				<s:content>
+					<g:Label ui:field="nbTestsStarted" />
+				</s:content>
+			</s:LigneFormulaire>
+
+			<s:LigneFormulaire libelle="nombre de tests terminés">
+				<s:content>
+					<g:Label ui:field="nbTestsEnded" />
+				</s:content>
+			</s:LigneFormulaire>
+
+		</g:VerticalPanel>
+	</g:FlowPanel>
+</ui:UiBinder>

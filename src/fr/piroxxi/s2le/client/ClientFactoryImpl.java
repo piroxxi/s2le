@@ -30,6 +30,8 @@ import fr.piroxxi.s2le.client.user.confirm.CreateAccountConfirmationView;
 import fr.piroxxi.s2le.client.user.confirm.CreateAccountConfirmationViewImpl;
 import fr.piroxxi.s2le.client.user.create.CreateAccountView;
 import fr.piroxxi.s2le.client.user.create.CreateAccountViewImpl;
+import fr.piroxxi.s2le.client.user.stats.UserStatistiquesView;
+import fr.piroxxi.s2le.client.user.stats.UserStatistiquesViewImpl;
 import fr.piroxxi.s2le.shared.StoreService;
 import fr.piroxxi.s2le.shared.StoreServiceAsync;
 import fr.piroxxi.s2le.shared.security.SecurityService;
@@ -139,5 +141,10 @@ public class ClientFactoryImpl implements ClientFactory {
 	@Override
 	public CreateAccountConfirmationView getCreateAccountConfirmationView() {
 		return createAccountConfirmationView;
+	}
+
+	@Override
+	public UserStatistiquesView getUserStatistiquesView() {
+		return new UserStatistiquesViewImpl();
 	}
 }

@@ -23,7 +23,7 @@ public class CreateTestActivity extends AbstractActivity implements
 		this.factory = factory;
 		this.view = factory.getCreateTestView();
 		view.setDelegate(this);
-		
+
 		this.factory.getStoreService().getCategories(
 				new AsyncCallback<Category[]>() {
 
@@ -50,8 +50,10 @@ public class CreateTestActivity extends AbstractActivity implements
 	public void startTest(List<Difficulty> difficulties,
 			List<Category> categories, int quantity, boolean chronometree) {
 
-		this.factory.getStoreService().createTest("", difficulties, categories,
-				quantity, chronometree, new AsyncCallback<String>() {
+		this.factory.getStoreService().createTest(
+				this.factory.getSessionManager().getSessionId(), difficulties,
+				categories, quantity, chronometree,
+				new AsyncCallback<String>() {
 
 					@Override
 					public void onSuccess(String test) {
