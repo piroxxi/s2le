@@ -2,13 +2,13 @@ package fr.piroxxi.s2le.client.user.stats;
 
 import com.google.gwt.activity.shared.AbstractActivity;
 import com.google.gwt.event.shared.EventBus;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 
 import fr.piroxxi.s2le.client.ClientFactory;
 import fr.piroxxi.s2le.client.events.LoggedInEvent;
 import fr.piroxxi.s2le.client.events.LoggedOutEvent;
 import fr.piroxxi.s2le.client.events.LoggingEventHandler;
+import fr.piroxxi.s2le.client.ui.OperationCallback;
 import fr.piroxxi.s2le.client.ui.SessionManager.SessionVerifier;
 import fr.piroxxi.s2le.model.User;
 
@@ -49,7 +49,7 @@ public class UserStatistiquesActivity extends AbstractActivity implements
 		this.clientFactory.getStoreService().getUser(
 				this.clientFactory.getSessionManager().getSessionId(),
 				this.clientFactory.getSessionManager().getUserName(),
-				new AsyncCallback<User>() {
+				new OperationCallback<User>() {
 
 					@Override
 					public void onSuccess(User result) {

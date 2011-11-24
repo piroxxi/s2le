@@ -2,8 +2,6 @@ package fr.piroxxi.s2le.client.test;
 
 import com.google.gwt.activity.shared.AbstractActivity;
 import com.google.gwt.event.shared.EventBus;
-import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.google.gwt.user.client.ui.SimplePanel;
 
@@ -15,6 +13,7 @@ import fr.piroxxi.s2le.client.test.questions.MultiChoicesQuestionPanel;
 import fr.piroxxi.s2le.client.test.questions.SimpleQuestionPanel;
 import fr.piroxxi.s2le.client.test.questions.TranslationQuestionPanel;
 import fr.piroxxi.s2le.client.test.questions.YesNoQuestionPanel;
+import fr.piroxxi.s2le.client.ui.OperationCallback;
 import fr.piroxxi.s2le.model.Test;
 import fr.piroxxi.s2le.model.question.MultiChoicesQuestion;
 import fr.piroxxi.s2le.model.question.Question;
@@ -37,21 +36,19 @@ public class TestRunningActivity extends AbstractActivity implements
 		this.view.setDelegate(this);
 		panel = this.view.getMainPanel();
 
-		this.clientFactory.getStoreService().getTest(testPlace.getTestId(),
-				new AsyncCallback<Test>() {
+		this.clientFactory
+				.getStoreService()
+				.getTest(
+						testPlace.getTestId(),
+						new OperationCallback<Test>(this.clientFactory,
+								"(TestRunningActivity) Erreur lors de la récupération du test.") {
 
-					@Override
-					public void onFailure(Throwable caught) {
-						Window.alert("(TestRunningActivity) du coup on a pas reussi a chopper le test :/ "
-								+ caught);
-					}
-
-					@Override
-					public void onSuccess(Test test) {
-						TestRunningActivity.this.test = test;
-						printQuestion();
-					}
-				});
+							@Override
+							public void onSuccess(Test test) {
+								TestRunningActivity.this.test = test;
+								printQuestion();
+							}
+						});
 
 	}
 
@@ -99,21 +96,22 @@ public class TestRunningActivity extends AbstractActivity implements
 		final boolean moreQuestion = test.hasAnswered(goodAnswer);
 
 		// On effectue la mise à jour de l'objet test coté serveur.
-		this.clientFactory.getStoreService().hasAnswered(
-				this.clientFactory.getSessionManager().getSessionId(),
-				test.getId(), goodAnswer, new AsyncCallback<Boolean>() {
+		this.clientFactory
+				.getStoreService()
+				.hasAnswered(
+						this.clientFactory.getSessionManager().getSessionId(),
+						test.getId(),
+						goodAnswer,
+						new OperationCallback<Boolean>(
+								this.clientFactory,
+								"(TestRunningActivity) Erreure lors de la mis à jour des reponces coté serveur.") {
 
-					@Override
-					public void onFailure(Throwable caught) {
-						Window.alert("(TestRunningActivity) rha bah mince alors!");
-					}
-
-					@Override
-					public void onSuccess(Boolean result) {
-						clientFactory.getEventBus().fireEvent(
-								new QuestionAnsweredEvent(goodAnswer));
-					}
-				});
+							@Override
+							public void onSuccess(Boolean result) {
+								clientFactory.getEventBus().fireEvent(
+										new QuestionAnsweredEvent(goodAnswer));
+							}
+						});
 
 		if (!moreQuestion) {
 			clientFactory.getPlaceController().goTo(

@@ -3,11 +3,11 @@ package fr.piroxxi.s2le.client.login;
 import com.google.gwt.activity.shared.AbstractActivity;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.google.inject.Inject;
 
 import fr.piroxxi.s2le.client.ClientFactory;
+import fr.piroxxi.s2le.client.ui.OperationCallback;
 import fr.piroxxi.s2le.client.ui.SessionManager.SessionVerifier;
 
 public class LoginActivity extends AbstractActivity implements
@@ -19,7 +19,7 @@ public class LoginActivity extends AbstractActivity implements
 	@Inject
 	public LoginActivity(ClientFactory factory) {
 		this.factory = factory;
-		
+
 		this.view = factory.getLoginView();
 		this.view.setDelegate(this);
 
@@ -45,25 +45,22 @@ public class LoginActivity extends AbstractActivity implements
 
 	@Override
 	public void login(final String userName, String password) {
-		factory.getSecurityService().login(userName, password,
-				new AsyncCallback<String>() {
-
-					@Override
-					public void onSuccess(String sessionId) {
-						if (sessionId != null) {
-							factory.getSessionManager().setLoggedIn(userName,
-									sessionId);
-							view.setConnectedUser(userName);
-						} else {
-							Window.alert("Wrong username or password!");
-						}
-					}
-
-					@Override
-					public void onFailure(Throwable caught) {
-						Window.alert("Failure : " + caught.getMessage());
-					}
-				});
+		factory.getSecurityService()
+				.login(userName,
+						password,
+						new OperationCallback<String>(this.factory,
+								"(LoginActivity) Erreure lors de la verification de la tentative de logging") {
+							@Override
+							public void onSuccess(String sessionId) {
+								if (sessionId != null) {
+									factory.getSessionManager().setLoggedIn(
+											userName, sessionId);
+									view.setConnectedUser(userName);
+								} else {
+									Window.alert("Wrong username or password!");
+								}
+							}
+						});
 	}
 
 	@Override

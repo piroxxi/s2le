@@ -9,6 +9,7 @@ import fr.piroxxi.s2le.model.Category;
 import fr.piroxxi.s2le.model.Difficulty;
 import fr.piroxxi.s2le.model.Test;
 import fr.piroxxi.s2le.model.User;
+import fr.piroxxi.s2le.model.messages.Message;
 import fr.piroxxi.s2le.model.question.Question;
 import fr.piroxxi.s2le.model.question.QuestionType;
 
@@ -36,4 +37,11 @@ public interface StoreServiceAsync {
 
 	void createAccount(String nom, String email, String password,
 			AsyncCallback<String> callback);
+
+	void sendMessage(String session, Message message,
+			AsyncCallback<Void> callback);
+
+	void hasNewMessage(String session, AsyncCallback<Boolean> callback);
+
+	void getMessages(String session, AsyncCallback<Message[]> callback);
 }

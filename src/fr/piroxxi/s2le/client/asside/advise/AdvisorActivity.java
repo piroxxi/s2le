@@ -4,10 +4,10 @@ import com.google.gwt.activity.shared.AbstractActivity;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 
-import fr.piroxxi.s2le.client.ClientFactory; 
+import fr.piroxxi.s2le.client.ClientFactory;
+import fr.piroxxi.s2le.client.ui.OperationCallback;
 import fr.piroxxi.s2le.client.ui.SessionManager.SessionVerifier;
 import fr.piroxxi.s2le.model.Advise;
 
@@ -53,17 +53,13 @@ public class AdvisorActivity extends AbstractActivity implements
 	private void updateAdvise() {
 		this.factory.getStoreService().getRandomAdvise(
 				factory.getSessionManager().getSessionId(),
-				new AsyncCallback<Advise>() {
+				new OperationCallback<Advise>(this.factory,
+						"(AdvisorActivity) Unnable to get next advise") {
 
 					@Override
 					public void onSuccess(Advise result) {
 						currentAdvise = result;
 						view.showAdvise(result);
-					}
-
-					@Override
-					public void onFailure(Throwable caught) {
-						Window.alert("(AdvisorActivity) unnable to get next advise");
 					}
 				});
 	}

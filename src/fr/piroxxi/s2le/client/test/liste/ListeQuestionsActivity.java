@@ -2,15 +2,15 @@ package fr.piroxxi.s2le.client.test.liste;
 
 import com.google.gwt.activity.shared.AbstractActivity;
 import com.google.gwt.event.shared.EventBus;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 
 import fr.piroxxi.s2le.client.ClientFactory;
 import fr.piroxxi.s2le.client.events.LoggedInEvent;
 import fr.piroxxi.s2le.client.events.LoggedOutEvent;
 import fr.piroxxi.s2le.client.events.LoggingEventHandler;
-import fr.piroxxi.s2le.client.places.StartQuestionCreationPlace;
 import fr.piroxxi.s2le.client.places.EditQuestionPlace;
+import fr.piroxxi.s2le.client.places.StartQuestionCreationPlace;
+import fr.piroxxi.s2le.client.ui.OperationCallback;
 import fr.piroxxi.s2le.client.ui.SessionManager.SessionVerifier;
 import fr.piroxxi.s2le.model.question.Question;
 
@@ -22,6 +22,8 @@ public class ListeQuestionsActivity extends AbstractActivity implements
 
 	public ListeQuestionsActivity(final ClientFactory clientFactory) {
 		this.clientFactory = clientFactory;
+		this.view = clientFactory.getListeTestView();
+		view.setDelegate(this);
 
 		this.clientFactory.getEventBus().addHandler(LoggedInEvent.TYPE, this);
 		this.clientFactory.getEventBus().addHandler(LoggedOutEvent.TYPE, this);
@@ -41,27 +43,28 @@ public class ListeQuestionsActivity extends AbstractActivity implements
 	}
 
 	private void showQuestion() {
-		this.clientFactory.getStoreService().listeQuestions(
-				this.clientFactory.getSessionManager().getSessionId(),
-				new AsyncCallback<Question[]>() {
+		this.clientFactory
+				.getStoreService()
+				.listeQuestions(
+						this.clientFactory.getSessionManager().getSessionId(),
+						new OperationCallback<Question[]>(
+								this.clientFactory,
+								"(ListeQuestionsActivity) Impossible de récupérer la liste des questions tant que vous n'êtes pas connecté(e).") {
+							@Override
+							public void onSuccess(Question[] result) {
+								view.hideErrorPanel();
+								view.setQuestions(result);
+							}
 
-					@Override
-					public void onSuccess(Question[] result) {
-						view.hideErrorPanel();
-						view.setQuestions(result);
-					}
-
-					@Override
-					public void onFailure(Throwable caught) {
-						view.showErrorPanel("Impossible de récupérer la liste des questions tant que vous n'êtes pas connecté(e).");
-					}
-				});
+							@Override
+							public void onFailure(Throwable caught) {
+								view.showErrorPanel("Impossible de récupérer la liste des questions tant que vous n'êtes pas connecté(e).");
+							}
+						});
 	}
 
 	@Override
 	public void start(AcceptsOneWidget panel, EventBus eventBus) {
-		this.view = clientFactory.getListeTestView();
-		view.setDelegate(this);
 		panel.setWidget(view);
 	}
 

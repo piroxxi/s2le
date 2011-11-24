@@ -26,19 +26,12 @@
 			position: absolute;
 			right: -11px;
 			bottom: -23px;
-			color: #42392E;
-			border: none;
-			background: none;
-		}
-		
-		.button:hover {
-			text-decoration:underline;		
 		}
 	</ui:style>
 
 	<g:HTMLPanel styleName="{style.cadre}">
 		<g:Label styleName="{style.title}">Did you know?</g:Label>
 		<g:Label ui:field="advise" styleName="{style.advise}" />
-		<g:Button ui:field="enSavoirPlus" styleName="{style.button}">En savoir plus</g:Button>
+		<g:Button ui:field="enSavoirPlus" styleName="button_link {style.button}">En savoir plus</g:Button>
 	</g:HTMLPanel>
 </ui:UiBinder>

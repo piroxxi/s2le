@@ -15,6 +15,7 @@ import fr.piroxxi.s2le.model.Category;
 import fr.piroxxi.s2le.model.Difficulty;
 import fr.piroxxi.s2le.model.Test;
 import fr.piroxxi.s2le.model.User;
+import fr.piroxxi.s2le.model.messages.Message;
 import fr.piroxxi.s2le.model.question.MultiChoicesQuestion;
 import fr.piroxxi.s2le.model.question.Question;
 import fr.piroxxi.s2le.model.question.QuestionType;
@@ -22,6 +23,7 @@ import fr.piroxxi.s2le.model.question.SimpleQuestion;
 import fr.piroxxi.s2le.model.question.Translation;
 import fr.piroxxi.s2le.model.question.YesNoQuestion;
 import fr.piroxxi.s2le.server.injector.ServerModule;
+import fr.piroxxi.s2le.server.messages.MessageBox;
 import fr.piroxxi.s2le.server.security.SessionManager;
 import fr.piroxxi.s2le.shared.StoreService;
 import fr.piroxxi.s2le.shared.security.LogginException;
@@ -37,6 +39,7 @@ public class StoreServiceImpl extends RemoteServiceServlet implements
 	private Storage storage;
 	private SessionManager sessionManager;
 	private Map<String, Test> currentTests = new HashMap<String, Test>();
+	private MessageBox messageBox = MessageBox.MESSAGE_BOX;
 
 	public StoreServiceImpl() {
 		Injector injector = Guice.createInjector(new ServerModule());
@@ -247,5 +250,44 @@ public class StoreServiceImpl extends RemoteServiceServlet implements
 		}
 		storage.store(User.class, new User(nom, password, email));
 		return null;
+	}
+
+	/*
+	 * Here, we will probably need something like a MessageBox, on the server
+	 * side.
+	 */
+
+	@Override
+	public void sendMessage(String session, Message message)
+			throws LogginException {
+		System.out.println("[StoreServiceImpl] - appel à sendMessage("
+				+ session + ", " + message + ")");
+		if (!sessionManager.isValide(session)) {
+			throw new LogginException("vous n'êtes pas connecté");
+		}
+
+		messageBox.sendMessage(sessionManager.getUserId(session), message);
+	}
+
+	@Override
+	public Boolean hasNewMessage(String session) throws LogginException {
+		System.out.println("[StoreServiceImpl] - appel à hasNewMessage("
+				+ session + ")");
+		if (!sessionManager.isValide(session)) {
+			throw new LogginException("vous n'êtes pas connecté");
+		}
+
+		return messageBox.hasNewMessage(sessionManager.getUserId(session));
+	}
+
+	@Override
+	public Message[] getMessages(String session) throws LogginException {
+		System.out.println("[StoreServiceImpl] - appel à getMessages("
+				+ session + ")");
+		if (!sessionManager.isValide(session)) {
+			throw new LogginException("vous n'êtes pas connecté");
+		}
+
+		return messageBox.getMessages(sessionManager.getUserId(session));
 	}
 }

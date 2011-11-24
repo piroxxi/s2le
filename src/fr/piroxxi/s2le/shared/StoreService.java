@@ -10,6 +10,7 @@ import fr.piroxxi.s2le.model.Category;
 import fr.piroxxi.s2le.model.Difficulty;
 import fr.piroxxi.s2le.model.Test;
 import fr.piroxxi.s2le.model.User;
+import fr.piroxxi.s2le.model.messages.Message;
 import fr.piroxxi.s2le.model.question.Question;
 import fr.piroxxi.s2le.model.question.QuestionType;
 import fr.piroxxi.s2le.shared.security.LogginException;
@@ -22,20 +23,41 @@ public interface StoreService extends RemoteService {
 	String createTest(String session, List<Difficulty> difficulties,
 			List<Category> categories, int quantity, boolean chronometree);
 
+	/*
+	 * Methodes relatives aux tests.
+	 */
 	Test getTest(String testId);
 
 	Boolean hasAnswered(String session, String testId, boolean goodAnswer);
 
 	Category[] getCategories();
 
+	/*
+	 * Methodes relatives aux utilisateurs
+	 */
+	String createAccount(String nom, String email, String password);
+
 	User getUser(String session, String userId) throws LogginException;
 
+	/*
+	 * Methodes relatives aux questions.
+	 */
 	Question[] listeQuestions(String session) throws LogginException;
-
-	Advise getRandomAdvise(String session);
 
 	String createQuestion(String session, QuestionType questionType)
 			throws LogginException;
 
-	String createAccount(String nom, String email, String password);
+	/*
+	 * Methodes relatives aux conseils.
+	 */
+	Advise getRandomAdvise(String session);
+
+	/*
+	 * Methodes for message.
+	 */
+	void sendMessage(String session, Message message) throws LogginException;
+
+	Boolean hasNewMessage(String session) throws LogginException;
+
+	Message[] getMessages(String session) throws LogginException;
 }

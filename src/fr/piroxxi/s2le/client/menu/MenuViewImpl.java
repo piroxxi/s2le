@@ -15,13 +15,13 @@ public class MenuViewImpl extends Composite implements MenuView {
 
 	private Delegate delegate;
 
+	public MenuViewImpl() {
+		initWidget(uiBinder.createAndBindUi(this));
+	}
+
 	@Override
 	public void setDelegate(Delegate delegate) {
 		this.delegate = delegate;
-	}
-
-	public MenuViewImpl() {
-		initWidget(uiBinder.createAndBindUi(this));
 	}
 
 	@UiHandler("questions")

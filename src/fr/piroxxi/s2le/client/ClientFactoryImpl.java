@@ -15,6 +15,9 @@ import fr.piroxxi.s2le.client.login.LoginView;
 import fr.piroxxi.s2le.client.login.LoginViewImpl;
 import fr.piroxxi.s2le.client.menu.MenuView;
 import fr.piroxxi.s2le.client.menu.MenuViewImpl;
+import fr.piroxxi.s2le.client.messages.MessageBox;
+import fr.piroxxi.s2le.client.messages.MessageView;
+import fr.piroxxi.s2le.client.messages.MessageViewImpl;
 import fr.piroxxi.s2le.client.test.CreateTestView;
 import fr.piroxxi.s2le.client.test.CreateTestViewImpl;
 import fr.piroxxi.s2le.client.test.ResultTestView;
@@ -38,16 +41,18 @@ import fr.piroxxi.s2le.shared.security.SecurityService;
 import fr.piroxxi.s2le.shared.security.SecurityServiceAsync;
 
 public class ClientFactoryImpl implements ClientFactory {
-	private final SimpleEventBus eventBus = new SimpleEventBus();
-	private final PlaceController placeController = new PlaceController(
-			(com.google.web.bindery.event.shared.EventBus) eventBus);
-	private final SessionManager sessionManager = new SessionManager(this);
-
 	// services
 	private SecurityServiceAsync securityServiceAsync = GWT
 			.create(SecurityService.class);
 	private StoreServiceAsync storeServiceAsync = GWT
 			.create(StoreService.class);
+
+	// utils
+	private final SimpleEventBus eventBus = new SimpleEventBus();
+	private final PlaceController placeController = new PlaceController(
+			(com.google.web.bindery.event.shared.EventBus) eventBus);
+	private final SessionManager sessionManager = new SessionManager(this);
+	private final MessageBox messageBox = new MessageBox(this);
 
 	// views
 	private final AssideView assideView = new AssideViewImpl();
@@ -57,6 +62,7 @@ public class ClientFactoryImpl implements ClientFactory {
 	private final MenuView menuView = new MenuViewImpl();
 	private final AdvisorView advisorView = new AdvisorViewImpl();
 	private final CreateAccountConfirmationView createAccountConfirmationView = new CreateAccountConfirmationViewImpl();
+	private final MessageView messageView = new MessageViewImpl();
 
 	@Override
 	public EventBus getEventBus() {
@@ -66,6 +72,11 @@ public class ClientFactoryImpl implements ClientFactory {
 	@Override
 	public PlaceController getPlaceController() {
 		return placeController;
+	}
+
+	@Override
+	public MessageBox getMessageBox() {
+		return messageBox;
 	}
 
 	@Override
@@ -146,5 +157,10 @@ public class ClientFactoryImpl implements ClientFactory {
 	@Override
 	public UserStatistiquesView getUserStatistiquesView() {
 		return new UserStatistiquesViewImpl();
+	}
+
+	@Override
+	public MessageView getMessageView() {
+		return messageView;
 	}
 }

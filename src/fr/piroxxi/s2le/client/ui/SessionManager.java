@@ -3,8 +3,6 @@ package fr.piroxxi.s2le.client.ui;
 import java.util.Date;
 
 import com.google.gwt.user.client.Cookies;
-import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 
 import fr.piroxxi.s2le.client.ClientFactory;
 import fr.piroxxi.s2le.client.events.LoggedInEvent;
@@ -79,21 +77,24 @@ public class SessionManager {
 				sessionVerifier.isLoggedIn(false);
 				setLoggedOut();
 			} else {
-				clientFactory.getSecurityService().verifySession(sessionId,
-						new AsyncCallback<Boolean>() {
+				clientFactory
+						.getSecurityService()
+						.verifySession(
+								sessionId,
+								new OperationCallback<Boolean>(
+										this.clientFactory,
+										"(SessionManager) Erreure lors de la verification de la session") {
 
-							@Override
-							public void onSuccess(Boolean result) {
-								setLoggedIn(userName, sessionId);
-								sessionVerifier.isLoggedIn(result);
-							}
-
-							@Override
-							public void onFailure(Throwable caught) {
-								Window.alert("(SessionManager) erreure lors de la verification de la session "
-										+ sessionId + " - " + caught);
-							}
-						});
+									@Override
+									public void onSuccess(Boolean result) {
+										if (result) {
+											setLoggedIn(userName, sessionId);
+										} else {
+											setLoggedOut();
+										}
+										sessionVerifier.isLoggedIn(result);
+									}
+								});
 			}
 			isApplicationStarting = false;
 		} else {

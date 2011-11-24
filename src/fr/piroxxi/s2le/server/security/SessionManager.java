@@ -32,9 +32,12 @@ public class SessionManager {
 		System.out.println("[SessionManager] creation de la session "
 				+ sessionId + " pour " + name + "    -> " + this);
 
+		Date expirationDate = new Date((new Date().getTime() + TEN_MINUTES));
+		System.out.println("\n\n\t--------------------\nIl est " + new Date()
+				+ " et la session " + sessionId + " pour l'utilisateur " + name
+				+ " expirera le " + expirationDate + "\n\n\n");
 		sessions.put(sessionId, name);
-		sessionsTimmer.put(sessionId, new Date(new Date().getTime()
-				+ TEN_MINUTES));
+		sessionsTimmer.put(sessionId, expirationDate);
 
 		return sessionId;
 	}
@@ -57,10 +60,11 @@ public class SessionManager {
 		Date sessionTimout = sessionsTimmer.get(sessionId);
 		System.out.println("[SessionManager] la session expire en "
 				+ sessionTimout + " mais on est en " + new Date());
-		if(sessionTimout.after(new Date())){
+		if (sessionTimout.after(new Date())) {
 			System.out.println("[SessionManager]\t=> La session est valide!\n");
-		}else{
-			System.out.println("[SessionManager]\t=> La session n'est pas valide!\n");
+		} else {
+			System.out
+					.println("[SessionManager]\t=> La session n'est pas valide!\n");
 		}
 		return sessionTimout.after(new Date());
 	}

@@ -2,9 +2,27 @@
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
 	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:a="urn:import:fr.piroxxi.s2le.client.asside">
 
-	<g:HTMLPanel>
-		Utilisateur : <g:Label ui:field="userName" /><g:Button ui:field="more">see more</g:Button><br/>
-		Nombres de questions repondues : <g:Label ui:field="nbAnswer" /><br/>
-		Nombres de bonnes reponces : <g:Label ui:field="nbGoodAnswer" /><br/>
+	<ui:style>
+		.panel {
+			position: relative;
+		}
+		
+		.button {
+			position: absolute;
+			right: -11px;
+			bottom: -7px;
+		}
+	</ui:style>
+	<g:HTMLPanel styleName="{style.panel}">
+		Utilisateur :
+		<span ui:field="userName" />
+		Nombres de questions repondues :
+		<g:Label ui:field="nbAnswer" />
+		<br />
+		Nombres de bonnes reponces :
+		<g:Label ui:field="nbGoodAnswer" />
+		<br />
+
+		<g:Button ui:field="more" styleName="button_link {style.button}">see more</g:Button>
 	</g:HTMLPanel>
 </ui:UiBinder>

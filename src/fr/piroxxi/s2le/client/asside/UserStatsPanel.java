@@ -1,6 +1,7 @@
 package fr.piroxxi.s2le.client.asside;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.SpanElement;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -22,7 +23,7 @@ public class UserStatsPanel extends Composite {
 	private static MyUiBinder uiBinder = GWT.create(MyUiBinder.class);
 
 	@UiField
-	Label userName;
+	SpanElement userName;
 	@UiField
 	Label nbAnswer;
 	@UiField
@@ -38,7 +39,7 @@ public class UserStatsPanel extends Composite {
 
 	public void showUserStats(User user) {
 		this.user = user;
-		userName.setText(user.getName());
+		userName.setInnerText(user.getName());
 		nbAnswer.setText(user.getNbQuestionsRepondues() + "");
 		nbGoodAnswer.setText(user.getNbQuestionsJustes() + "");
 	}

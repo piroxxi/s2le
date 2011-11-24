@@ -3,7 +3,6 @@ package fr.piroxxi.s2le.client.asside;
 import com.google.gwt.activity.shared.AbstractActivity;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 
 import fr.piroxxi.s2le.client.ClientFactory;
@@ -14,6 +13,7 @@ import fr.piroxxi.s2le.client.events.LoggingEventHandler;
 import fr.piroxxi.s2le.client.events.QuestionAnsweredEvent;
 import fr.piroxxi.s2le.client.events.QuestionAnsweredEventHandler;
 import fr.piroxxi.s2le.client.places.CreateAccountPlace;
+import fr.piroxxi.s2le.client.ui.OperationCallback;
 import fr.piroxxi.s2le.model.User;
 
 public class AssideActivity extends AbstractActivity implements
@@ -60,17 +60,12 @@ public class AssideActivity extends AbstractActivity implements
 		factory.getStoreService().getUser(
 				factory.getSessionManager().getSessionId(),
 				factory.getSessionManager().getUserName(),
-				new AsyncCallback<User>() {
+				new OperationCallback<User>(this.factory,
+						"(AssideActivity) Could not retrieve user") {
 
 					@Override
 					public void onSuccess(User user) {
 						view.showUserStats(user);
-					}
-
-					@Override
-					public void onFailure(Throwable caught) {
-						Window.alert("(AssideActivity) - Could not retrieve user "
-								+ caught);
 					}
 				});
 	}

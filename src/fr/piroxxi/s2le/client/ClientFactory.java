@@ -8,6 +8,8 @@ import fr.piroxxi.s2le.client.asside.advise.AdvisorView;
 import fr.piroxxi.s2le.client.hello.HelloView;
 import fr.piroxxi.s2le.client.login.LoginView;
 import fr.piroxxi.s2le.client.menu.MenuView;
+import fr.piroxxi.s2le.client.messages.MessageBox;
+import fr.piroxxi.s2le.client.messages.MessageView;
 import fr.piroxxi.s2le.client.test.CreateTestView;
 import fr.piroxxi.s2le.client.test.ResultTestView;
 import fr.piroxxi.s2le.client.test.TestRunningView;
@@ -24,6 +26,8 @@ public interface ClientFactory {
 	EventBus getEventBus();
 
 	PlaceController getPlaceController();
+	
+	MessageBox getMessageBox();
 
 	// Services
 	SecurityServiceAsync getSecurityService();
@@ -58,4 +62,7 @@ public interface ClientFactory {
 	CreateAccountConfirmationView getCreateAccountConfirmationView();
 
 	UserStatistiquesView getUserStatistiquesView();
+
+	MessageView getMessageView();
+
 }

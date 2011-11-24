@@ -13,6 +13,7 @@ import com.google.web.bindery.event.shared.EventBus;
 import fr.piroxxi.s2le.client.asside.AssideActivity;
 import fr.piroxxi.s2le.client.login.LoginActivity;
 import fr.piroxxi.s2le.client.menu.MenuActivity;
+import fr.piroxxi.s2le.client.messages.MessageActivity;
 import fr.piroxxi.s2le.client.places.HelloPlace;
 
 /**
@@ -27,6 +28,7 @@ public class S2le implements EntryPoint {
 	private SimplePanel assidePanel = new SimplePanel();
 	private SimplePanel mainPanel = new SimplePanel();
 	private SimplePanel menuPanel = new SimplePanel();
+	private SimplePanel messagePanel = new SimplePanel();
 
 	private ClientFactory factory = GWT.create(ClientFactory.class);
 
@@ -54,7 +56,7 @@ public class S2le implements EntryPoint {
 		// Goes to the place represented on URL else default place
 		historyHandler.handleCurrentHistory();
 
-		/* Lancement des trois modules. */
+		/* Lancement des quates modules. */
 		LoginActivity loginActivity = new LoginActivity(factory);
 		loginActivity.start(loginPanel, factory.getEventBus());
 		RootPanel.get("login").add(loginPanel);
@@ -66,6 +68,17 @@ public class S2le implements EntryPoint {
 		MenuActivity menuActivity = new MenuActivity(factory);
 		menuActivity.start(menuPanel, factory.getEventBus());
 		RootPanel.get("menu").add(menuPanel);
+
+		MessageActivity messageActivity = new MessageActivity(factory);
+		messageActivity.start(messagePanel, factory.getEventBus());
+		RootPanel.get("messages").add(messagePanel);
+
+		/*
+		 * Here we are! The application is fully started, lets do a test of the
+		 * messagingAPI.
+		 */
+		factory.getMessageBox().sendMessage(
+				"l'application a correctement demaré ", "on est trop bon!");
 	}
 
 }
