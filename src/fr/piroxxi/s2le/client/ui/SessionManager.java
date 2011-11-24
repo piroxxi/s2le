@@ -76,6 +76,7 @@ public class SessionManager {
 			if (sessionId == null) {
 				sessionVerifier.isLoggedIn(false);
 				setLoggedOut();
+				isApplicationStarting = false;
 			} else {
 				clientFactory
 						.getSecurityService()
@@ -93,10 +94,10 @@ public class SessionManager {
 											setLoggedOut();
 										}
 										sessionVerifier.isLoggedIn(result);
+										isApplicationStarting = false;
 									}
 								});
 			}
-			isApplicationStarting = false;
 		} else {
 			sessionVerifier.isLoggedIn(loggedIn);
 		}
